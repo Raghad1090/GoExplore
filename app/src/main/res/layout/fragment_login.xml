@@ -6,21 +6,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#f1f8e9">
+    android:background="@color/white">
 
-                <Button
-                    android:id="@+id/Button"
-                    android:layout_width="160dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="125dp"
-                    android:layout_marginTop="590dp"
-                    android:layout_marginEnd="125dp"
-                    android:layout_marginBottom="80dp"
-                    android:gravity="center"
-                    android:text="@string/login"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/Button"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="590dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="80dp"
+        android:gravity="center"
+        android:text="@string/login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="80dp"
+        android:gravity="center"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="331dp"
+        android:layout_height="376dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.375"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

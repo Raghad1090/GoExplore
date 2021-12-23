@@ -7,17 +7,16 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.raghad.goexplore.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:name="com.raghad.goexplore.pages.LoginFragment"
+        android:label="Go Explore"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/homePageFragment"
-        android:name="com.raghad.goexplore.HomePageFragment"
-        android:label="fragment_home_page"
-        tools:layout="@layout/fragment_home_page" />
+        android:name="com.raghad.goexplore.pages.HomePageFragment"
+        android:label="Start Explore" />
 
 </navigation>
