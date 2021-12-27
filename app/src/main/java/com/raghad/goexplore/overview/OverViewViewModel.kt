@@ -33,8 +33,6 @@ class OverViewViewModel : ViewModel(){
         getPlacesPhotos()
     }
 
-    fun displayPlacesPhotos(displayPosition: Int) {
-    }
 
     private fun getPlacesPhotos(){
 
@@ -43,12 +41,10 @@ class OverViewViewModel : ViewModel(){
             try {
 
                 _photos.value = GoExploreApi.retrofitService.getPhotos().photos?.photo
-                Log.d("raghad", "bindRecyclerView1: $_photos")
+                Log.d("rrr", "bindRecyclerView1: $_photos")
 
                 _title.value = _photos.value!![0]?.title
                 _image.value = _photos.value!![0]?.imageUrl
-
-                Log.e("Lamia" , "${_title.value}")
 
                 _status.value = GoExploreStatus.DONE
 

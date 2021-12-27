@@ -46,10 +46,9 @@ data class PhotoItem(
     @Json(name="isfamily")
     val isfamily: Int? = null,
 
-
     ){
 
-    val imageUrl: String  get() = "http://farm${farm}.static.flickr.com/${server}/${id}_${secret}.jpg"
+    val imageUrl: String  get() = "https://farm${farm}.static.flickr.com/${server}/${id}_${secret}.jpg"
 
 }
 

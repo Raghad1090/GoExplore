@@ -8,15 +8,48 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.raghad.goexplore.pages.LoginFragment"
-        android:label="Go Explore"
-        tools:layout="@layout/fragment_login">
+        android:label="Go Explore">
         <action
-            android:id="@+id/action_loginFragment_to_homePageFragment"
-            app:destination="@id/homePageFragment" />
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/homePageFragment"
-        android:name="com.raghad.goexplore.pages.HomePageFragment"
-        android:label="Start Explore" />
+        android:id="@+id/homeFragment"
+        android:name="com.raghad.goexplore.pages.HomeFragment"
+        android:label="Start Explore">
+        <action
+            android:id="@+id/action_homeFragment_to_travelPlansFragment"
+            app:destination="@id/travelPlansFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.raghad.goexplore.pages.FavoritesFragment"
+        android:label="FFF"
+        tools:layout="@layout/fragment_favorites">
+        <action
+            android:id="@+id/action_favoritesFragment_to_travelPlansFragment"
+            app:destination="@id/travelPlansFragment" />
+        <action
+            android:id="@+id/action_favoritesFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/travelPlansFragment"
+        android:name="com.raghad.goexplore.pages.TravelPlansFragment"
+        android:label="fragment_travel_plans"
+        tools:layout="@layout/fragment_travel_plans" >
+        <action
+            android:id="@+id/action_travelPlansFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_travelPlansFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
 
 </navigation>

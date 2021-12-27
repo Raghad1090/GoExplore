@@ -17,10 +17,11 @@ import com.raghad.goexplore.overview.GoExploreStatus
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<PhotoItem>?){
 
-    Log.d("zamel", "bindRecyclerView: $data")
+    Log.d("raghad", "bindRecyclerView: $data")
 
     val adapter = recyclerView.adapter as PhotoGridAdapter
     adapter.submitList(data)
+
 }
 
 
