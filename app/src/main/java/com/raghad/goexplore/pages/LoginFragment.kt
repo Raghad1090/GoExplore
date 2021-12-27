@@ -1,11 +1,12 @@
 package com.raghad.goexplore.pages
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.firebase.ui.auth.AuthUI
@@ -13,6 +14,7 @@ import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
 import com.raghad.goexplore.databinding.FragmentLoginBinding
+
 
 /*
 app login page
@@ -48,9 +50,11 @@ class LoginFragment : Fragment() {
             // [END auth_fui_create_intent] }
         }
 
-        binding.homeButton.setOnClickListener{
-        val action = LoginFragmentDirections.actionLoginFragmentToHomePageFragment()
-        findNavController().navigate(action)}
+
+//        binding.home.setOnClickListener {
+//            val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
+//            findNavController().navigate(action) }
+
     }
 
     override fun onCreateView(
@@ -61,6 +65,7 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
@@ -69,8 +74,9 @@ class LoginFragment : Fragment() {
             // Successfully signed in
             val user = FirebaseAuth.getInstance().currentUser
 
-//            val action = LoginFragmentDirections.actionLoginFragmentToHomePageFragment()
-//            findNavController().navigate(action)
+            val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
+            findNavController().navigate(action)
+            Log.d("move", "bindRecyclerView1: $action")
 
         } else {
             // Sign in failed. If response is null the user canceled the

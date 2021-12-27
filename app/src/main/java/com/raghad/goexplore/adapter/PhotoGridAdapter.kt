@@ -1,5 +1,6 @@
 package com.raghad.goexplore.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -18,6 +19,8 @@ class PhotoGridAdapter :
         fun bind(photoItem: PhotoItem) {
             binding.photo = photoItem
             binding.executePendingBindings()
+            Log.d("photo", "bindRecyclerView: $photoItem")
+
         }
     }
 
@@ -31,6 +34,7 @@ class PhotoGridAdapter :
 
         override fun areContentsTheSame(oldItem: PhotoItem, newItem: PhotoItem): Boolean {
             return oldItem.imageUrl == newItem.imageUrl
+
         }
     }
 

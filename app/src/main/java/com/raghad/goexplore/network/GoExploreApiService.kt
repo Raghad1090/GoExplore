@@ -6,6 +6,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
+const val apiKey = "297612143bcb8e51e4defe734d1269ac"
+
 private const val BASE_URL = "https://www.flickr.com"
 
 private val moshi = Moshi.Builder()
