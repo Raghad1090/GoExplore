@@ -1,4 +1,4 @@
-package com.raghad.goexplore.pages
+package com.raghad.goexplore.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
