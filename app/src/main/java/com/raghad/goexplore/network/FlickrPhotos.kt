@@ -49,9 +49,7 @@ data class PhotoItem(
     ){
 
     val imageUrl: String  get() = "https://farm${farm}.static.flickr.com/${server}/${id}_${secret}.jpg"
-
 }
-
 data class Photos(
 
     @Json(name="perpage")

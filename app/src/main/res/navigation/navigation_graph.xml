@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_homeFragment_to_favoritesFragment"
             app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
     </fragment>
 
     <fragment
@@ -51,5 +54,18 @@
         android:name="com.raghad.goexplore.LoginActivity"
         android:label="LoginActivity"
         tools:layout="@layout/fragment_login"/>
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.raghad.goexplore.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" />
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="com.raghad.goexplore.ui.DescriptionFragment"
+        android:label="Place Description">
+        <argument
+            android:name="itemPosition"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

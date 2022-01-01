@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
@@ -43,20 +44,35 @@ class LoginActivity : AppCompatActivity() {
     val signInIntent = AuthUI.getInstance()
         .createSignInIntentBuilder()
         .setAvailableProviders(providers)
+        .setTheme(R.style.raghad)
+//        .setLogo(R.drawable.)
         .build()
 
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
+
         val response = result.idpResponse
         if (result.resultCode == AppCompatActivity.RESULT_OK) {
             // Successfully signed in
             val user = FirebaseAuth.getInstance().currentUser
+
+//            startActivity(Intent(this,MainActivity::class.java))
 
             //open another activity to display home fragment
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
 
         } else {
-            Toast.makeText(this, "Its toast!", Toast.LENGTH_SHORT).show()
+            if (response == null){
+                finish()
+            }
+            if (response?.error?.errorCode == ErrorCodes.NO_NETWORK){
+                Toast.makeText(this,response?.error?.errorCode.toString(),Toast.LENGTH_LONG).show()
+                return
+            }
+            if (response?.error?.errorCode == ErrorCodes.UNKNOWN_ERROR){
+                Toast.makeText(this,response?.error?.errorCode.toString(),Toast.LENGTH_LONG).show()
+                return
+            }
 
             // Sign in failed. If response is null the user canceled the
             // sign-in flow using the back button. Otherwise check

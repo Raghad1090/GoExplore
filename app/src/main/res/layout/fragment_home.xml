@@ -32,7 +32,7 @@
             tools:listitem="@layout/grid_view_item" />
 
 
-        <!--        <ImageView-->
+<!--        <ImageView-->
 <!--            android:id="@+id/status_image"-->
 <!--            android:layout_width="300dp"-->
 <!--            android:layout_height="300dp"-->

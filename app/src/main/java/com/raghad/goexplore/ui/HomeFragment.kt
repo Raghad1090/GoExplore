@@ -2,8 +2,10 @@ package com.raghad.goexplore.ui
 
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.raghad.goexplore.R
 import com.raghad.goexplore.adapter.PhotoGridAdapter
 import com.raghad.goexplore.databinding.FragmentHomeBinding
 import com.raghad.goexplore.overview.OverViewViewModel
@@ -15,6 +17,12 @@ app home page
 class HomeFragment : Fragment() {
 
     private val viewModel: OverViewViewModel by viewModels()
+
+    private var _binding: FragmentHomeBinding? = null
+
+    private lateinit var binding: FragmentHomeBinding
+
+    private var favorite = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,4 +47,11 @@ class HomeFragment : Fragment() {
         return binding.root
 
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
+    }
+
+
 }

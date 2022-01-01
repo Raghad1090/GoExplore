@@ -28,10 +28,15 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
         val navController = findNavController(R.id.nav_host_fragment)
 
         bottomNavigationView.setupWithNavController(navController)
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

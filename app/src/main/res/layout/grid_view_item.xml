@@ -16,7 +16,7 @@
     <ImageView
         android:id="@+id/place_image"
         android:layout_width="wrap_content"
-        android:layout_height="180dp"
+        android:layout_height="200dp"
         android:adjustViewBounds="true"
         android:padding="4dp"
         android:scaleType="fitXY"
@@ -26,21 +26,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/image_title"
-            android:layout_width="206dp"
-            android:layout_height="46dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="23dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="16dp"
-            android:text="@{photo.title}"
-            android:gravity="center"
-            tools:src="@tools:sample/backgrounds/scenic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/place_image" />
+<!--        <TextView-->
+<!--            android:id="@+id/image_title"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="23dp"-->
+<!--            android:layout_marginTop="23dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@{photo.title}"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/place_image"-->
+<!--            app:layout_constraintVertical_bias="0.0"-->
+<!--            tools:src="@tools:sample/backgrounds/scenic" />-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

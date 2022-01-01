@@ -3,14 +3,19 @@ package com.raghad.goexplore.adapter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.raghad.goexplore.databinding.GridViewItemBinding
 import com.raghad.goexplore.network.PhotoItem
+import com.raghad.goexplore.ui.HomeFragment
+import com.raghad.goexplore.ui.HomeFragmentDirections
 
-class PhotoGridAdapter :
-    ListAdapter<PhotoItem, PhotoGridAdapter.GoExplorePhotoViewHolder>(DiffCallback) {
+class PhotoGridAdapter : ListAdapter<PhotoItem, PhotoGridAdapter.GoExplorePhotoViewHolder>
+    (DiffCallback) {
 
 
     class GoExplorePhotoViewHolder(private var binding: GridViewItemBinding
@@ -22,6 +27,9 @@ class PhotoGridAdapter :
             Log.d("photo", "bindRecyclerView: $photoItem")
 
         }
+
+        //click on photo to open description page
+        var displayDesscripton = binding.placeImage
     }
 
 
@@ -49,6 +57,12 @@ class PhotoGridAdapter :
 
         val placePhoto = getItem(position)
         holder.bind(placePhoto)
+
+        holder.displayDesscripton.setOnClickListener{
+            Log.e("TAG", "onBindViewHolder: $position", )
+            val action = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment(position)
+            holder.displayDesscripton.findNavController().navigate(action)
+        }
     }
 }
 

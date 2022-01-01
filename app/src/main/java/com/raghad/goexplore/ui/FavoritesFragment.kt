@@ -5,10 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.raghad.goexplore.Database
 import com.raghad.goexplore.R
+import com.raghad.goexplore.databinding.FragmentFavoritesBinding
+import com.raghad.goexplore.databinding.FragmentHomeBinding
 
+/*
+app favouriate list page
+ */
 
 class FavoritesFragment : Fragment() {
+
+    private var binding: FragmentFavoritesBinding? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +30,18 @@ class FavoritesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorites, container, false)
-    }
 
+    val fragmentFavoritesBinding = FragmentFavoritesBinding.inflate(inflater,container,false)
+        binding = fragmentFavoritesBinding
+        return fragmentFavoritesBinding.root
+         }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+    }
 
 
     companion object {
