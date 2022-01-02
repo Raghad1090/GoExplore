@@ -47,17 +47,16 @@
             tools:src="@tools:sample/backgrounds/scenic" />
 
 
-        <ImageButton
+        <Button
             android:id="@+id/favButton"
-            android:layout_width="62dp"
-            android:layout_height="59dp"
-            android:layout_marginEnd="172dp"
-            android:layout_marginBottom="16dp"
+            android:layout_width="205dp"
+            android:layout_height="37dp"
+            android:layout_marginEnd="92dp"
+            android:layout_marginBottom="24dp"
             android:background="@color/white"
+            android:text="@string/add_to_favouriate"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/favorite_icon"
-            app:tint="@color/red800" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
 
         val binding = FragmentHomeBinding.inflate(inflater)
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.viewModel = viewModel
 

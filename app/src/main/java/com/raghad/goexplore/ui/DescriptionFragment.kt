@@ -15,16 +15,12 @@ import com.raghad.goexplore.R
 import com.raghad.goexplore.databinding.FragmentDescriptionBinding
 import com.raghad.goexplore.overview.OverViewViewModel
 
-//private const val position = 0
-
 class DescriptionFragment : Fragment() {
 
     private var _binding: FragmentDescriptionBinding? = null
     private lateinit var binding:FragmentDescriptionBinding
 
     private val viewModel: OverViewViewModel by viewModels()
-
-//    private var isFavorite = true
 
     var displayPosition:Int=0
 
@@ -47,7 +43,7 @@ class DescriptionFragment : Fragment() {
         val binding = FragmentDescriptionBinding.inflate(inflater)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         // Giving the binding access to the OverviewViewModel
         binding.viewModel = viewModel

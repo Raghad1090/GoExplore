@@ -12,9 +12,12 @@
     <color name="yellow600">#FFB300</color>
 <!--    <color name="green800">#43A047</color>-->
 
-    <color name="green800">#4CAF50</color>
+<!--    <color name="green800">#4CAF50</color>-->
+    71B371
+        <color name="green800">#71B371</color>
 
-<!--    <color name="green800">#00BFA5</color>-->
+
+    <!--    <color name="green800">#00BFA5</color>-->
 
     <color name="red800">#C62828</color>
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:scrollbars="vertical">
+
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:gravity="start"
+                android:text="Trip Title"
+                android:textSize="25dp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="74dp" />
+
+
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="157dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:gravity="start"
+                android:text="Trip Duration"
+                android:textSize="25dp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="237dp" />
+
+            <Button
+                android:layout_width="65dp"
+                android:layout_height="42dp"
+                android:drawableBottom="@drawable/calendar_icon"
+                tools:layout_editor_absoluteX="262dp"
+                tools:layout_editor_absoluteY="240dp" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

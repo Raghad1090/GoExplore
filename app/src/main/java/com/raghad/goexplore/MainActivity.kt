@@ -55,6 +55,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        if(id == R.id.profile){
+
+            
+        }
+
         return super.onOptionsItemSelected(item)
     }
 }

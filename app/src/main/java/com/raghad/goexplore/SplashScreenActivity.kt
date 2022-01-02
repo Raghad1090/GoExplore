@@ -27,7 +27,7 @@ class SplashScreenActivity : AppCompatActivity() {
             val intent = Intent (this, LoginActivity::class.java)
             startActivity(intent)
             finish()
-        },4000) // 4 seconds
+        },3000) // 3 seconds
 
 //        val textView: TextView = findViewById(R.id.splashScreenText)
 //        val sideAnimation = AnimationUtils.loadAnimation(this, R.anim.)

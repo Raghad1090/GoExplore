@@ -20,6 +20,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         var button = findViewById<Button>(R.id.Button)
+        var test = findViewById<Button>(R.id.Test)
 
         button.setOnClickListener {
 
@@ -27,6 +28,12 @@ class LoginActivity : AppCompatActivity() {
             signInLauncher.launch(signInIntent)
             // [END auth_fui_create_intent] }
 
+        }
+
+        //to test app during work without login
+        test.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 

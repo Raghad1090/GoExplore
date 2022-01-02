@@ -10,14 +10,14 @@ class Database {
     fun save(title:String){
         val db = Firebase.firestore
 // Create a new user with a first and last name
-       val user: MutableMap<String,String> = HashMap()
-        user["abc"]  = title
+       val plans: MutableMap<String,String> = HashMap()
+        plans["trip"]  = title
 
 
 
 // Add a new document with a generated ID
         db.collection("users")
-            .add(user)
+            .add(plans)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
             }
