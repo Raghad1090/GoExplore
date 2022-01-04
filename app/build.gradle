@@ -10,15 +10,15 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('/Users/raghadmohammed/Desktop/FinalProjectKey')
+            storeFile file('/Users/raghadmohammed/Desktop/FinalProjectKey2')
             storePassword '123456'
-            keyAlias 'key1'
+            keyAlias 'key2'
             keyPassword '123456'
         }
         release {
-            storeFile file('/Users/raghadmohammed/Desktop/FinalProjectKey')
+            storeFile file('/Users/raghadmohammed/Desktop/FinalProjectKey2')
             storePassword '123456'
-            keyAlias 'key1'
+            keyAlias 'key2'
             keyPassword '123456'
         }
     }
@@ -118,13 +118,26 @@ dependencies {
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
-//    //updated to allow creat list and mutablelist
-//    implementation 'androidx.core:core-ktx:1.7.0'
-//
-//    implementation "io.coil-kt:coil-svg:0.12.0"
-
     //bottom navigation
     implementation 'com.google.android.material:material:1.0.0'
+
+
+    // Room components
+    implementation "androidx.room:room-runtime:2.2.5"
+    kapt "androidx.room:room-compiler:2.2.5"
+    implementation "androidx.room:room-ktx:2.2.5"
+    androidTestImplementation "androidx.room:room-testing:2.2.5"
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+
+    // Kotlin components
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
+
 
 
 

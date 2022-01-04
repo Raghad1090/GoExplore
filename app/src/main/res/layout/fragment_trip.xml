@@ -9,40 +9,52 @@
             android:orientation="vertical"
             android:scrollbars="vertical">
 
-
             <TextView
+                android:id="@+id/title"
                 android:layout_width="200dp"
                 android:layout_height="45dp"
+                android:layout_marginTop="80dp"
                 android:gravity="start"
                 android:text="Trip Title"
                 android:textSize="25dp"
-                tools:layout_editor_absoluteX="32dp"
-                tools:layout_editor_absoluteY="74dp" />
-
+                app:layout_constraintBottom_toTopOf="@+id/creatTrip"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.232"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <EditText
+                android:id="@+id/addtripTitle"
                 android:layout_width="200dp"
                 android:layout_height="45dp"
-                tools:layout_editor_absoluteX="32dp"
-                tools:layout_editor_absoluteY="157dp" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="200dp"
-                android:layout_height="45dp"
-                android:gravity="start"
-                android:text="Trip Duration"
-                android:textSize="25dp"
-                tools:layout_editor_absoluteX="32dp"
-                tools:layout_editor_absoluteY="237dp" />
+                android:layout_marginTop="36dp"
+                app:layout_constraintBottom_toTopOf="@+id/creatTrip"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.232"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:layout_constraintVertical_bias="0.007" />
 
             <Button
-                android:layout_width="65dp"
-                android:layout_height="42dp"
-                android:drawableBottom="@drawable/calendar_icon"
-                tools:layout_editor_absoluteX="262dp"
-                tools:layout_editor_absoluteY="240dp" />
+                android:id="@+id/creatTrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="64dp"
+                android:text="Creat"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="408dp"
+                android:layout_height="92dp"
+                android:layout_marginBottom="372dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.333"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

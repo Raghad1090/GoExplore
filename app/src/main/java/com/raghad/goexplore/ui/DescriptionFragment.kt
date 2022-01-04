@@ -24,6 +24,7 @@ class DescriptionFragment : Fragment() {
 
     var displayPosition:Int=0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,8 +41,8 @@ class DescriptionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = FragmentDescriptionBinding.inflate(inflater)
-
+         _binding = FragmentDescriptionBinding.inflate(inflater)
+        binding=_binding!!
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -55,7 +56,15 @@ class DescriptionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.e("TAG", "onViewCreated: after $displayPosition ", )
+
         viewModel.displayDescription(displayPosition)
+
+        binding.favButton.setOnClickListener {
+            var index = 0
+            val addFavFun = viewModel.favourite( index , "")
+
+            viewModel.addToFirebace(addFavFun)
+        }
 
     }
 }

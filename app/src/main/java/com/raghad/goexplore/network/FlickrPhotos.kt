@@ -53,7 +53,7 @@ data class PhotoItem(
 data class Photos(
 
     @Json(name="perpage")
-    val perpage: Int? = null,
+    val perpage: String? = null,
 
     @Json(name="total")
     val total: Int? = null,

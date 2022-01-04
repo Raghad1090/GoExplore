@@ -5,11 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.raghad.goexplore.model.FavouritesData
 import com.raghad.goexplore.network.GoExploreApi
 import com.raghad.goexplore.network.PhotoItem
+import com.raghad.goexplore.network.Photos
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
@@ -30,9 +32,9 @@ class OverViewViewModel : ViewModel(){
     private val _image = MutableLiveData<String>()
     val image: LiveData<String> = _image
 
+    private val favouritesDataFirebace = Firebase.firestore.collection("user")
 
     init {
-
         getPlacesPhotos(0)
     }
 
@@ -68,12 +70,23 @@ class OverViewViewModel : ViewModel(){
     }
 
 
-//    fun favourite(index : Int ) : FavouritesData {
-//      var item = _photos.value?.get(index)
-//
-//        _image.value = item?.imageUrl
-//        _title.value = item?.title
-//
-//        return FavouritesData( _title.value )
-//    }
+    fun favourite(index:Int, user: String) : FavouritesData{
+
+        var item = _photos.value?.get(index)
+
+        _image.value = item?.imageUrl
+
+        return FavouritesData(_image.value)
+    }
+
+    fun addToFirebace(item: FavouritesData){
+
+        var user = FirebaseAuth.getInstance().currentUser?.uid?:""
+
+        favouritesDataFirebace.document(user).update("fav",item)
+            .addOnCompleteListener{
+
+            }
+    }
+
 }

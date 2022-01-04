@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_travelPlansFragment_to_favoritesFragment"
             app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_travelPlansFragment_to_tripFragment"
+            app:destination="@id/tripFragment" />
     </fragment>
 
     <activity
@@ -66,6 +69,14 @@
         <argument
             android:name="itemPosition"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/tripFragment"
+        android:name="com.raghad.goexplore.ui.TripFragment"
+        android:label="TripFragment">
+        <action
+            android:id="@+id/action_tripFragment_to_travelPlansFragment"
+            app:destination="@id/travelPlansFragment" />
     </fragment>
 
 </navigation>
