@@ -79,6 +79,7 @@ class OverViewViewModel : ViewModel(){
         return FavouritesData(_image.value)
     }
 
+
     fun addToFirebace(item: FavouritesData){
 
         var user = FirebaseAuth.getInstance().currentUser?.uid?:""
@@ -87,6 +88,5 @@ class OverViewViewModel : ViewModel(){
             .addOnCompleteListener{
 
             }
+        }
     }
-
-}

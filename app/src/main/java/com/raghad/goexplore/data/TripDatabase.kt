@@ -1,37 +1,47 @@
-package com.raghad.goexplore.data
+package com.raghad.goexplore
 
-import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import android.content.ContentValues.TAG
+import android.util.Log
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
+class TripDatabase {
+
+    fun save (title: String, description: String){
+
+        val db = Firebase.firestore
+
+// Create a new trip
+        val plans: MutableMap<String,String> = HashMap()
+        plans["trip title"]  = title
+        plans["trip description"]  = description
 
 
-@Database(entities = [Trip::class], version = 1, exportSchema = false)
-abstract class TripDatabase: RoomDatabase() {
+// Add a new document with a generated ID
+        db.collection("My trips")
+            .add(plans)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }
+    }
 
-//    abstract fun dao(): Dao
-//
-//    companion object{
-//
-//        @Volatile
-//        private var INSTANCE: TripDatabase? = null
-//
-//        fun getDatabase(context: Context): TripDatabase{
-//            val tempInstance = INSTANCE
-//            if(tempInstance != null){
-//                return tempInstance
-//            }
-//
-//            synchronized(this){
-//                val instance = Room.databaseBuilder(
-//                    context.applicationContext,
-//                    TripDatabase::class.java,
-//                    "trip_datbace"
-//                ).build()
-//                INSTANCE = instance
-//                return instance
-//            }
-//        }
-//
-//    }
+    fun read (){
+
+        val db = Firebase.firestore
+
+       val readData = db.collection("My trips").document("user")
+        readData.get()
+            .addOnCompleteListener {document ->
+
+                if (document != null) {
+
+                } else {
+                }
+            }
+            .addOnFailureListener { exception ->
+            }
+    }
 }

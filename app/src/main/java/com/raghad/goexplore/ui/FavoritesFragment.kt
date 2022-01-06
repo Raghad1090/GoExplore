@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.raghad.goexplore.Database
-import com.raghad.goexplore.R
+import androidx.fragment.app.viewModels
+import com.raghad.goexplore.adapter.FavouritesAdapter
+import com.raghad.goexplore.adapter.PhotoGridAdapter
 import com.raghad.goexplore.databinding.FragmentFavoritesBinding
 import com.raghad.goexplore.databinding.FragmentHomeBinding
+import com.raghad.goexplore.overview.OverViewViewModel
 
 /*
 app favouriate list page
@@ -16,8 +18,11 @@ app favouriate list page
 
 class FavoritesFragment : Fragment() {
 
-    private var binding: FragmentFavoritesBinding? = null
+    private val viewModel: OverViewViewModel by viewModels()
 
+    private var _binding: FragmentFavoritesBinding? = null
+
+    private lateinit var binding: FragmentFavoritesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,19 +36,23 @@ class FavoritesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-    val fragmentFavoritesBinding = FragmentFavoritesBinding.inflate(inflater,container,false)
-        binding = fragmentFavoritesBinding
-        return fragmentFavoritesBinding.root
-         }
+
+        val binding = FragmentFavoritesBinding.inflate(inflater)
+
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        binding.viewModel = viewModel
+
+        binding.recyclerViewFavouriate.adapter = FavouritesAdapter()
+
+        return binding.root
+
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
     }
 
-
-    companion object {
-    }
 }

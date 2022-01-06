@@ -29,9 +29,5 @@ class SplashScreenActivity : AppCompatActivity() {
             finish()
         },3000) // 3 seconds
 
-//        val textView: TextView = findViewById(R.id.splashScreenText)
-//        val sideAnimation = AnimationUtils.loadAnimation(this, R.anim.)
-//        textView.startAnimation(sideAnimation)
-
     }
 }

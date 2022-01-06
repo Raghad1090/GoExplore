@@ -16,7 +16,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_View"
+        android:id="@+id/recycler_View_trips"
         android:layout_width="match_parent"
         android:layout_height="720dp"
         android:layout_marginTop="3dp"
@@ -24,7 +24,8 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/plan_list_item"/>
 
 
 </FrameLayout>
