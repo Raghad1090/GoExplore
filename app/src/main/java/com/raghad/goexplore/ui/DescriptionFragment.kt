@@ -1,17 +1,13 @@
 package com.raghad.goexplore.ui
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.raghad.goexplore.R
+import com.google.firebase.auth.FirebaseAuth
 import com.raghad.goexplore.databinding.FragmentDescriptionBinding
 import com.raghad.goexplore.overview.OverViewViewModel
 
@@ -22,7 +18,13 @@ class DescriptionFragment : Fragment() {
 
     private val viewModel: OverViewViewModel by viewModels()
 
-    var displayPosition:Int=0
+    //to get arg values
+    private lateinit var imageID: Int
+
+    var displayPosition : Int = 0
+
+
+    var Uid = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +32,11 @@ class DescriptionFragment : Fragment() {
 
         arguments.let {
 
+
             displayPosition = it!!.getInt("itemPosition")
             Log.d("TAG", "bindRecyclerView1: $displayPosition")
+
+            imageID  = it!!.getString("imageId")
 
         }
     }
@@ -41,8 +46,9 @@ class DescriptionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-         _binding = FragmentDescriptionBinding.inflate(inflater)
+        _binding = FragmentDescriptionBinding.inflate(inflater)
         binding=_binding!!
+
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -55,16 +61,20 @@ class DescriptionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.e("TAG", "onViewCreated: after $displayPosition ", )
 
         viewModel.displayDescription(displayPosition)
 
         binding.favButton.setOnClickListener {
-            var index = 0
-            val addFavFun = viewModel.favourite( index , "")
+            //image // des get info
+            // send to view model to push it to fierbase store
+//
+//            val imageId: Int  = displayPosition
+//
+//            viewModel.addFavouriate(Uid, imageId)
 
-            viewModel.addToFirebace(addFavFun)
+            viewModel.addFavouriate(Uid,imageID)
+
+
         }
-
     }
 }

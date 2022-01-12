@@ -1,9 +1,11 @@
 package com.raghad.goexplore.adapter
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.ListAdapter
@@ -59,12 +61,17 @@ class PhotoGridAdapter : ListAdapter<PhotoItem, PhotoGridAdapter.GoExplorePhotoV
         holder.bind(placePhoto)
 
         holder.displayDesscripton.setOnClickListener{
+
             Log.e("TAG", "onBindViewHolder: $position", )
-            val action = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment(position)
+            Log.e("TAG", "onBindViewHolder: ${placePhoto.id}")
+
+            val action = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment(9,"")
             holder.displayDesscripton.findNavController().navigate(action)
+
         }
     }
 }
+
 
 
 

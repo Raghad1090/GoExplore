@@ -13,55 +13,49 @@
                 android:id="@+id/addtripDes"
                 android:layout_width="314dp"
                 android:layout_height="134dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginBottom="56dp"
                 app:layout_constraintBottom_toTopOf="@+id/creatTrip"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.505"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title"
-                app:layout_constraintVertical_bias="0.481" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/title2"
                 android:layout_width="200dp"
                 android:layout_height="45dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginBottom="20dp"
                 android:gravity="start"
                 android:text="Notes"
                 android:textSize="25dp"
-                app:layout_constraintBottom_toTopOf="@+id/creatTrip"
+                app:layout_constraintBottom_toTopOf="@+id/addtripDes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.232"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.317" />
+                app:layout_constraintTop_toBottomOf="@+id/addtripTitle"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="200dp"
                 android:layout_height="45dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="82dp"
                 android:gravity="start"
                 android:text="Trip Title"
                 android:textSize="25dp"
-                app:layout_constraintBottom_toTopOf="@+id/creatTrip"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.232"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/addtripTitle"
                 android:layout_width="200dp"
                 android:layout_height="45dp"
-                android:layout_marginTop="36dp"
-                app:layout_constraintBottom_toTopOf="@+id/creatTrip"
+                android:layout_marginTop="31dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.232"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title"
-                app:layout_constraintVertical_bias="0.007" />
+                app:layout_constraintTop_toBottomOf="@+id/title" />
 
             <Button
                 android:id="@+id/creatTrip"

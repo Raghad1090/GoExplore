@@ -17,8 +17,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/photos_grid"
-            android:layout_width="406dp"
-            android:layout_height="712dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:clipToPadding="false"
             android:padding="6dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

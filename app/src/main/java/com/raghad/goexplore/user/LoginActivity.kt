@@ -1,4 +1,4 @@
-package com.raghad.goexplore
+package com.raghad.goexplore.user
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,8 @@ import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
+import com.raghad.goexplore.MainActivity
+import com.raghad.goexplore.R
 
 
 class LoginActivity : AppCompatActivity() {
