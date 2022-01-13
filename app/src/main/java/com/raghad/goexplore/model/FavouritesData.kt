@@ -1,6 +1,5 @@
 package com.raghad.goexplore.model
 
-import com.raghad.goexplore.network.PhotoItem
 import com.squareup.moshi.Json
 
 data class FavouritesData (

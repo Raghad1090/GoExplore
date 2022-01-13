@@ -1,5 +1,6 @@
 package com.raghad.goexplore.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -14,9 +15,9 @@ class FavouritesAdapter : ListAdapter<FavouritesData, FavouritesAdapter.ItemView
     class ItemViewHolder(private var binding: ListItemBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(favouritesData: FavouritesData) {
-
-            binding.item = favouritesData
-            binding.executePendingBindings()
+            Log.e("TAG", "bind: $favouritesData", )
+          //  binding.item = favouritesData
+           // binding.executePendingBindings()
         }
     }
 
@@ -30,14 +31,11 @@ class FavouritesAdapter : ListAdapter<FavouritesData, FavouritesAdapter.ItemView
         }
 
         override fun areContentsTheSame(oldItem: FavouritesData, newItem: FavouritesData): Boolean {
-
             return oldItem.imageUrl == newItem.imageUrl
-
         }
     }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-
             val adapterLayout=  ListItemBinding.inflate(LayoutInflater.from(parent.context))
             return ItemViewHolder(adapterLayout)
     }

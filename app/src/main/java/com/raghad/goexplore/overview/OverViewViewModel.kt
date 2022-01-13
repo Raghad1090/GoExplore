@@ -80,28 +80,27 @@ class OverViewViewModel : ViewModel() {
     }
 
 
-    fun displayDescription(displayPosition: Int) {
+    fun displayDescription(imageID: Int) {
 
-        getPlacesPhotos(displayPosition)
+        getPlacesPhotos(imageID)
     }
 
 
-    fun addFavouriate(id :String , imageId: String){
+    fun addFavouriate(id :String , imageId: Int){
 
-        val favItem = _fav.value?.find { it!!.id == imageId }
+        val favItem = _photos.value?.find { it!!.id == imageId.toString() }
 
 //        val favItem1 = _fav.value?.find { it!!.id == imageId.toString() }
 
 
         favItem.let{
 
-
             Log.e("TAG", "addFavouriate: title ${it?.title}", )
             Log.e("TAG", "addFavouriate: farm ${it?.farm}", )
             Log.e("TAG", "addFavouriate:  secret ${it?.secret}", )
             Log.e("TAG", "addFavouriate: server ${it?.server}", )
             Log.e("TAG", "addFavouriate: imageUrl ${it?.imageUrl}", )
-            val favItem : FavouritesData = FavouritesData(it?.title,it?.farm,it?.id,it?.secret,it?.server,it?.imageUrl)
+            val favItem : FavouritesData = FavouritesData(it?.title,it?.farm,it?.id,it?.secret,it?.server,it?.imageUrll)
 
             addFavouriateToFirebace(favItem)
 

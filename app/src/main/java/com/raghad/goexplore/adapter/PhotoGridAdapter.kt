@@ -55,22 +55,23 @@ class PhotoGridAdapter : ListAdapter<PhotoItem, PhotoGridAdapter.GoExplorePhotoV
             LayoutInflater.from(parent.context)))
     }
 
-    override fun onBindViewHolder(holder: GoExplorePhotoViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GoExplorePhotoViewHolder, imageID: Int) {
 
-        val placePhoto = getItem(position)
+        val placePhoto = getItem(imageID)
         holder.bind(placePhoto)
 
         holder.displayDesscripton.setOnClickListener{
 
-            Log.e("TAG", "onBindViewHolder: $position", )
+//            Log.e("TAG", "onBindViewHolder: $position", )
             Log.e("TAG", "onBindViewHolder: ${placePhoto.id}")
 
-            val action = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment(9,"")
+            val action = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment(imageID)
             holder.displayDesscripton.findNavController().navigate(action)
 
         }
     }
 }
+
 
 
 

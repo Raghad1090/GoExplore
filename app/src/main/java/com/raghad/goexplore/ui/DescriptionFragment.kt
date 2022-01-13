@@ -19,9 +19,12 @@ class DescriptionFragment : Fragment() {
     private val viewModel: OverViewViewModel by viewModels()
 
     //to get arg values
-    private lateinit var imageID: Int
+//    private lateinit var imageID: Int
 
-    var displayPosition : Int = 0
+//    var displayPosition : Int = 0
+
+    var imageID : Int = 0
+
 
 
     var Uid = FirebaseAuth.getInstance().currentUser?.uid ?: ""
@@ -33,10 +36,12 @@ class DescriptionFragment : Fragment() {
         arguments.let {
 
 
-            displayPosition = it!!.getInt("itemPosition")
-            Log.d("TAG", "bindRecyclerView1: $displayPosition")
+//            displayPosition = it!!.getInt("itemPosition")
+//            Log.d("TAG", "bindRecyclerView1: $displayPosition")
 
-            imageID  = it!!.getString("imageId")
+            imageID  = it!!.getInt("imageId")
+
+//            imageID  = it!!.getString("imageId")
 
         }
     }
@@ -62,7 +67,7 @@ class DescriptionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.displayDescription(displayPosition)
+        viewModel.displayDescription(imageID)
 
         binding.favButton.setOnClickListener {
             //image // des get info

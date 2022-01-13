@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.raghad.goexplore.adapter.FavouritesAdapter
+
 import com.raghad.goexplore.databinding.FragmentFavoritesBinding
 import com.raghad.goexplore.overview.OverViewViewModel
 
@@ -39,7 +39,7 @@ class FavoritesFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        binding.recyclerViewFavouriate.adapter = FavouritesAdapter()
+    //    binding.recyclerViewFavouriate.adapter = FavouritesAdapter()
 
         return binding.root
 
