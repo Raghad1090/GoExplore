@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name = "viewModel"
+            type = "com.raghad.goexplore.overview.OverViewViewModel"/>
+
+        <variable
+            name="result"
+            type="com.raghad.goexplore.network.PhotoItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/place_image"
+            android:layout_width="335dp"
+            android:layout_height="395dp"
+            android:adjustViewBounds="true"
+            android:padding="4dp"
+            android:scaleType="fitXY"
+            app:imageUrl="@{viewModel.image}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/image_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:gravity="center"
+            android:text="@{viewModel.title}"
+            android:textSize="17dp"
+            app:layout_constraintBottom_toTopOf="@+id/favButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/place_image"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+
+        <Button
+            android:id="@+id/favButton"
+            android:layout_width="205dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="115dp"
+            android:layout_marginTop="103dp"
+            android:layout_marginEnd="115dp"
+            android:layout_marginBottom="24dp"
+            android:background="@color/white"
+            android:text="@string/add_to_favouriate"
+            android:textColor="#FFFFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/place_image"
+            app:layout_constraintVertical_bias="0.568" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+

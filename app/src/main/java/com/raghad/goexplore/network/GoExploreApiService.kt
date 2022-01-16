@@ -22,7 +22,6 @@ private val retrofit = Retrofit.Builder()
 interface GoExploreApiService{
 
     @GET("/services/rest/?method=flickr.galleries.getPhotos&api_key=297612143bcb8e51e4defe734d1269ac&gallery_id=72157720302051615&format=json&nojsoncallback=1")
-
     suspend fun getPhotos(): Response
 
 }

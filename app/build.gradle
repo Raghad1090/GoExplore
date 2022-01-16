@@ -9,23 +9,18 @@ plugins {
 //after add debug and release in project structure
 android {
     signingConfigs {
-        debug {
-            storeFile file('/Users/raghadmohammed/Desktop/FinalProjectKey')
-            storePassword '123456'
-            keyAlias 'key1'
-            keyPassword '123456'
-        }
+
         release {
-            storeFile file('/Users/raghadmohammed/Desktop/FinalProjectKey')
+            storeFile file('/Users/raghadmohammed/Desktop/FinalProjectKey2')
             storePassword '123456'
-            keyAlias 'key1'
+            keyAlias 'key2'
             keyPassword '123456'
         }
     }
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.raghad.goexplore"
+        applicationId "com.raghad.goexplore.v1"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -38,7 +33,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
+
 
         buildFeatures {
 
@@ -63,6 +60,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -76,6 +74,8 @@ dependencies {
 
     // Also declare the dependency for the Google Play services library and specify its version
     implementation 'com.google.android.gms:play-services-auth:20.0.0'
+
+
 
     //Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
@@ -101,12 +101,12 @@ dependencies {
 
 
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
 
     //glid
     implementation 'com.github.bumptech.glide:glide:4.12.0'
@@ -117,14 +117,24 @@ dependencies {
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
-//    //updated to allow creat list and mutablelist
-//    implementation 'androidx.core:core-ktx:1.7.0'
-//
-//    implementation "io.coil-kt:coil-svg:0.12.0"
-
     //bottom navigation
     implementation 'com.google.android.material:material:1.0.0'
 
 
+    // Room components
+    implementation "androidx.room:room-runtime:2.2.5"
+    kapt "androidx.room:room-compiler:2.2.5"
+    implementation "androidx.room:room-ktx:2.2.5"
+    androidTestImplementation "androidx.room:room-testing:2.2.5"
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+
+    // Kotlin components
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
 
 }

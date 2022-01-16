@@ -3,19 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.raghad.goexplore.pages.LoginFragment"
-        android:label="Go Explore">
-        <action
-            android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/homeFragment"
-        android:name="com.raghad.goexplore.pages.HomeFragment"
+        android:name="com.raghad.goexplore.ui.HomeFragment"
         android:label="Start Explore">
         <action
             android:id="@+id/action_homeFragment_to_travelPlansFragment"
@@ -24,13 +16,14 @@
             android:id="@+id/action_homeFragment_to_favoritesFragment"
             app:destination="@id/favoritesFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_homeFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.raghad.goexplore.pages.FavoritesFragment"
-        android:label="FFF"
+        android:name="com.raghad.goexplore.ui.FavoritesFragment"
+        android:label="Favourites"
         tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/action_favoritesFragment_to_travelPlansFragment"
@@ -39,17 +32,58 @@
             android:id="@+id/action_favoritesFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/travelPlansFragment"
-        android:name="com.raghad.goexplore.pages.TravelPlansFragment"
-        android:label="fragment_travel_plans"
-        tools:layout="@layout/fragment_travel_plans" >
+        android:name="com.raghad.goexplore.ui.TravelPlansFragment"
+        android:label="Plans"
+        tools:layout="@layout/fragment_travel_plans">
         <action
             android:id="@+id/action_travelPlansFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <action
             android:id="@+id/action_travelPlansFragment_to_favoritesFragment"
             app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_travelPlansFragment_to_displayTripFragment"
+            app:destination="@id/displayTripFragment" />
+        <action
+            android:id="@+id/action_travelPlansFragment_to_tripFragment"
+            app:destination="@id/tripFragment" />
     </fragment>
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.raghad.goexplore.MainActivity" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.raghad.goexplore.user.LoginActivity"
+        android:label="LoginActivity"/>
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="com.raghad.goexplore.ui.DescriptionFragment"
+        android:label="Place Description">
+        <action
+            android:id="@+id/action_descriptionFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <argument
+            android:name="itemPosition"
+            app:argType="integer" />
+        <argument
+            android:name="imageId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/tripFragment"
+        android:name="com.raghad.goexplore.ui.TripFragment"
+        android:label="TripFragment">
+        <action
+            android:id="@+id/action_tripFragment_to_travelPlansFragment"
+            app:destination="@id/travelPlansFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/displayTripFragment"
+        android:name="com.raghad.goexplore.ui.DisplayTripFragment"
+        android:label="DisplayTripFragment" />
 
 </navigation>
