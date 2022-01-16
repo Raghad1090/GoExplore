@@ -16,7 +16,7 @@ class FavouritesAdapter : ListAdapter<FavouritesData, FavouritesAdapter.ItemView
 
         fun bind(favouritesData: FavouritesData) {
             Log.e("TAG", "bind: $favouritesData", )
-//            binding.item = favouritesData
+            binding.item = favouritesData
             binding.executePendingBindings()
         }
     }
@@ -31,7 +31,7 @@ class FavouritesAdapter : ListAdapter<FavouritesData, FavouritesAdapter.ItemView
         }
 
         override fun areContentsTheSame(oldItem: FavouritesData, newItem: FavouritesData): Boolean {
-            return oldItem.imageUrll == newItem.imageUrll
+            return oldItem.imageUrl== newItem.imageUrl
         }
     }
 

@@ -7,24 +7,17 @@ data class FavouritesData (
     @Json(name="title")
     val title: String? = null,
 
-    @Json(name="farm")
-    val farm: Int? = null,
+
 
     @Json(name="id")
     val id: String? = null,
 
-    @Json(name="secret")
-    val secret: String? = null,
-
-    @Json(name="server")
-    val server: String? = null,
-
     @Json(name="image")
-    val imageUrll: List<imageUrl?>? = null,
+    val imageUrl: String ?= null,
 
-    ) {
+    ) {}
 
-}
+
 
     data class imageUrl (
 

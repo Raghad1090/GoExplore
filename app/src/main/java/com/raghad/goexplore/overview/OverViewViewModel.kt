@@ -119,7 +119,7 @@ class OverViewViewModel : ViewModel() {
             Log.e("TAG", "addFavouriate: server ${it?.server}")
             Log.e("TAG", "addFavouriate: imageUrl ${it?.imageUrl}")
             val favItem: FavouritesData =
-                FavouritesData(it?.title, it?.farm, it?.id, it?.secret, it?.server, it?.imageUrll)
+                FavouritesData(it?.title, it?.id,  it?.imageUrl)
 
             addFavouriateToFirebace(favItem)
 
@@ -155,7 +155,6 @@ class OverViewViewModel : ViewModel() {
 
             }.addOnFailureListener { println(it.message) }
     }
-
 
     fun displayTrip() {
         Log.e("TAG", "showUserInfo: in")
