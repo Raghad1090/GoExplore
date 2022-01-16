@@ -42,7 +42,7 @@ data class PhotoItem(
     val secret: String? = null,
 
     @Json(name="title")
-    val title: String? = null,
+    val title: String= "",
 
     @Json(name="isfamily")
     val isfamily: Int? = null,

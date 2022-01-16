@@ -60,10 +60,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        if(id == R.id.profile){
-
-        }
-
         return super.onOptionsItemSelected(item)
     }
 }

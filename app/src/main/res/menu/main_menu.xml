@@ -15,10 +15,6 @@
         android:title="@string/logout"
         android:visible="true"/>
 
-    <item android:id="@+id/profile"
-        android:title="my profile"
-        android:visible="true"/>
-
     </group>
 
 </menu>

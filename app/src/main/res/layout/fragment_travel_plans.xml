@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.TravelPlansFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context="com.raghad.goexplore.overview.OverViewViewModel">
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -17,11 +16,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_margin="60dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="17dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/add_icon" />
+            app:layout_constraintHorizontal_bias="1.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.990"
+            app:srcCompat="@drawable/add_icon"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_View_trips"
@@ -36,18 +38,7 @@
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/plan_list_item" />
 
-<!--        <Button-->
-<!--            android:id="@+id/testPlan"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="236dp"-->
-<!--            android:text="BBBBBB"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.498"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
 
-
-</FrameLayout>

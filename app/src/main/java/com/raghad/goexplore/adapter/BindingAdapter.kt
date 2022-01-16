@@ -10,6 +10,8 @@ import coil.ImageLoader
 import coil.load
 import com.bumptech.glide.Glide
 import com.raghad.goexplore.R
+import com.raghad.goexplore.model.FavouritesData
+import com.raghad.goexplore.model.Trips
 import com.raghad.goexplore.network.GoExploreApi
 import com.raghad.goexplore.network.PhotoItem
 import com.raghad.goexplore.overview.GoExploreStatus
@@ -20,6 +22,22 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<PhotoItem>?){
     Log.d("raghad", "bindRecyclerView: $data")
 
     val adapter = recyclerView.adapter as PhotoGridAdapter
+    adapter.submitList(data)
+
+}
+
+@BindingAdapter("favouriatelistData")
+fun bindfavRecyclerView(recyclerView: RecyclerView, data: List<FavouritesData>?){
+
+    val adapter = recyclerView.adapter as FavouritesAdapter
+    adapter.submitList(data)
+
+}
+
+@BindingAdapter("triplistData")
+fun bindtripRecyclerView(recyclerView: RecyclerView, data: List<Trips>?){
+
+    val adapter = recyclerView.adapter as TripsAdapter
     adapter.submitList(data)
 
 }
@@ -38,7 +56,6 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .into(imgView)
     }
 }
-
 
 @BindingAdapter("goExploreStatus")
 fun bindStatus(statusImageView: ImageView, status: GoExploreStatus?){

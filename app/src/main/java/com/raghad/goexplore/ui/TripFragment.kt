@@ -23,6 +23,7 @@ import com.raghad.goexplore.overview.OverViewViewModel
 
 class TripFragment : Fragment() {
 
+
     private var binding: FragmentTripBinding? = null
 
     private val viewModel : OverViewViewModel by viewModels()
@@ -56,7 +57,10 @@ class TripFragment : Fragment() {
 
         binding?.creatTrip?.setOnClickListener {
 
-        save(binding!!.addtripTitle.editableText.toString(),binding!!.addtripDes.editableText.toString())
+//            save(binding!!.addtripTitle.editableText.toString(),binding!!.addtripDes.editableText.toString())
+//            save(binding!!.addtripTitle.editableText.toString(),binding!!.addtripDes.editableText.toString())
+
+            save(binding!!.addtripTitle.editText.toString(),binding!!.addtripDes.editableText.toString())
 
             val action = TripFragmentDirections.actionTripFragmentToTravelPlansFragment()
             view.findNavController().navigate(action)

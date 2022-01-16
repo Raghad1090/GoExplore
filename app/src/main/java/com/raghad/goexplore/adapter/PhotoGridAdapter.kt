@@ -1,27 +1,23 @@
 package com.raghad.goexplore.adapter
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.raghad.goexplore.databinding.GridViewItemBinding
 import com.raghad.goexplore.network.PhotoItem
-import com.raghad.goexplore.ui.HomeFragment
 import com.raghad.goexplore.ui.HomeFragmentDirections
 
 class PhotoGridAdapter : ListAdapter<PhotoItem, PhotoGridAdapter.GoExplorePhotoViewHolder>
     (DiffCallback) {
 
 
-    class GoExplorePhotoViewHolder(private var binding: GridViewItemBinding
-    ): RecyclerView.ViewHolder(binding.root) {
+    class GoExplorePhotoViewHolder(
+        private var binding: GridViewItemBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(photoItem: PhotoItem) {
             binding.photo = photoItem
@@ -51,24 +47,28 @@ class PhotoGridAdapter : ListAdapter<PhotoItem, PhotoGridAdapter.GoExplorePhotoV
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoExplorePhotoViewHolder {
 
-        return GoExplorePhotoViewHolder(GridViewItemBinding.inflate(
-            LayoutInflater.from(parent.context)))
+        return GoExplorePhotoViewHolder(
+            GridViewItemBinding.inflate(
+                LayoutInflater.from(parent.context)
+            )
+        )
     }
 
-    override fun onBindViewHolder(holder: GoExplorePhotoViewHolder, imageID: Int) {
+    override fun onBindViewHolder(holder: GoExplorePhotoViewHolder, position: Int) {
 
-        val placePhoto = getItem(imageID)
+        val placePhoto = getItem(position)
         holder.bind(placePhoto)
 
-        holder.displayDesscripton.setOnClickListener{
+        holder.displayDesscripton.setOnClickListener {
 
 //            Log.e("TAG", "onBindViewHolder: $position", )
             Log.e("TAG", "onBindViewHolder: ${placePhoto.id}")
-
-            val action = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment(imageID)
+            var b = placePhoto.id
+            val action = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment(position,b!!)
             holder.displayDesscripton.findNavController().navigate(action)
 
         }
+
     }
 }
 

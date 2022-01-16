@@ -1,10 +1,12 @@
 package com.raghad.goexplore.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -27,10 +29,6 @@ class TravelPlansFragment : Fragment() {
     private var binding: FragmentTravelPlansBinding? = null
     private lateinit var _binding: FragmentTravelPlansBinding
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var tripArrayList: ArrayList<Trips>
-    private lateinit var tripsAdapter: TripsAdapter
-    private lateinit var db : FirebaseFirestore
 
 
     override fun onCreateView(
@@ -41,11 +39,7 @@ class TravelPlansFragment : Fragment() {
 
         val binding = FragmentTravelPlansBinding.inflate(inflater)
 
-//        recyclerView = findviewById(R.id.recycler_View_trips)
-
-        tripsAdapter = TripsAdapter(tripArrayList)
-
-        recyclerView.adapter= tripsAdapter
+        binding.recyclerViewTrips.adapter = TripsAdapter()
 
         return binding.root
     }
@@ -57,17 +51,9 @@ class TravelPlansFragment : Fragment() {
         binding?.floatingActionButton?.setOnClickListener{
 
             var action = TravelPlansFragmentDirections.actionTravelPlansFragmentToTripFragment()
-            findNavController().navigate(action)
+            view.findNavController().navigate(action)
 
         }
-//
-//        binding?.testPlan?.setOnClickListener{
-//
-//            var action = TravelPlansFragmentDirections.actionTravelPlansFragmentToDisplayTripFragment()
-//            findNavController().navigate(action)
-//
-//        }
+
     }
-
-
 }

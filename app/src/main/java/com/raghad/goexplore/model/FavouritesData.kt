@@ -20,7 +20,7 @@ data class FavouritesData (
     val server: String? = null,
 
     @Json(name="image")
-    val imageUrl: List<imageUrl?>? = null,
+    val imageUrll: List<imageUrl?>? = null,
 
     ) {
 

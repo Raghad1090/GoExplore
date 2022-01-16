@@ -12,19 +12,23 @@ import com.google.firebase.ktx.Firebase
 import com.raghad.goexplore.model.FavouritesData
 import com.raghad.goexplore.network.GoExploreApi
 import com.raghad.goexplore.network.PhotoItem
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import java.lang.Exception
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.update
 
-enum class GoExploreStatus {LOADING, ERROR, DONE}
+enum class GoExploreStatus { LOADING, ERROR, DONE }
 
 class OverViewViewModel : ViewModel() {
-
 
     var Uid = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
     // collection to save trip plan
     private val collection = Firebase.firestore.collection("My trips")
-    //collection to save favouriate items
+
+    //collection to save favourite items
     private val favourateCollection = Firebase.firestore.collection("Favouriate")
 
 
@@ -49,27 +53,26 @@ class OverViewViewModel : ViewModel() {
     private val _tripD = MutableLiveData<String>()
     var tripD: LiveData<String> = _tripD
 
+    private var _isLoaded = MutableStateFlow<Boolean>(false)
+
 
     private val favouritesDataFirebace = Firebase.firestore.collection("Favouriate")
 
 
     init {
-        getPlacesPhotos(0)
+        getPlacesPhotos()
     }
 
 
-    private fun getPlacesPhotos(withIndex: Int) {
+    private fun getPlacesPhotos() {
 
         viewModelScope.launch {
             _status.value = GoExploreStatus.LOADING
             try {
                 _photos.value = GoExploreApi.retrofitService.getPhotos().photos?.photo!!
                 Log.d("rrr", "bindRecyclerView1: ${_photos.value.toString()}")
-                val item = _photos.value?.get(withIndex)
 
-                _image.value = item?.imageUrl!!
-                _title.value = item.title!!
-
+                _isLoaded.update { true }
                 _status.value = GoExploreStatus.DONE
 
             } catch (e: Exception) {
@@ -79,36 +82,51 @@ class OverViewViewModel : ViewModel() {
         }
     }
 
+    fun getItem(postion: Int) {
+        viewModelScope.launch {
+            _isLoaded.collect {
+                val item = _photos.value?.get(postion)
+                item?.let {
+                    _image.value = it.imageUrl
+                    _title.value = it.title
+                }
+            }
+        }
+    }
 
-    fun displayDescription(imageID: Int) {
+    fun displayDescription(position: Int, imageID: String) {
 
-        getPlacesPhotos(imageID)
+        getItem(position)
     }
 
 
-    fun addFavouriate(id :String , imageId: Int){
+    fun addFavouriate(id: String, imageId: String) {
 
-        val favItem = _photos.value?.find { it!!.id == imageId.toString() }
+        val favItem = _photos.value?.find {
+
+            Log.e("TAG", "addFavouriate: id:  ${it!!.id} imageid ${imageId}")
+
+            it!!.id == imageId
+        }
 
 //        val favItem1 = _fav.value?.find { it!!.id == imageId.toString() }
 
+        favItem.let {
 
-        favItem.let{
-
-            Log.e("TAG", "addFavouriate: title ${it?.title}", )
-            Log.e("TAG", "addFavouriate: farm ${it?.farm}", )
-            Log.e("TAG", "addFavouriate:  secret ${it?.secret}", )
-            Log.e("TAG", "addFavouriate: server ${it?.server}", )
-            Log.e("TAG", "addFavouriate: imageUrl ${it?.imageUrl}", )
-            val favItem : FavouritesData = FavouritesData(it?.title,it?.farm,it?.id,it?.secret,it?.server,it?.imageUrll)
+            Log.e("TAG", "addFavouriate: title ${it?.title}")
+            Log.e("TAG", "addFavouriate: farm ${it?.farm}")
+            Log.e("TAG", "addFavouriate:  secret ${it?.secret}")
+            Log.e("TAG", "addFavouriate: server ${it?.server}")
+            Log.e("TAG", "addFavouriate: imageUrl ${it?.imageUrl}")
+            val favItem: FavouritesData =
+                FavouritesData(it?.title, it?.farm, it?.id, it?.secret, it?.server, it?.imageUrll)
 
             addFavouriateToFirebace(favItem)
 
         }
     }
 
-
-    fun addFavouriateToFirebace(item : FavouritesData) {
+    fun addFavouriateToFirebace(item: FavouritesData) {
 
         favourateCollection.document("user").collection(Uid).add(item)
             .addOnCompleteListener { task ->
@@ -125,17 +143,17 @@ class OverViewViewModel : ViewModel() {
 
                 if (task.isSuccessful) {
 
-                    val item = mutableListOf<FavouritesData>()
+                    val item = mutableListOf<FavouritesData?>()
 
-                    for(data in task.result.documents){
+                    for (data in task.result.documents) {
 
                         val favouriate = data.toObject<FavouritesData>()
                         item.add(favouriate!!)
                     }
+                    _fav.value = item
                 }
 
             }.addOnFailureListener { println(it.message) }
-
     }
 
 
@@ -150,5 +168,4 @@ class OverViewViewModel : ViewModel() {
                 _tripD.value = task.result.data?.get("trip description").toString()
             }.addOnFailureListener { println(it.message) }
     }
-
 }
