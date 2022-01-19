@@ -54,5 +54,4 @@ class TripsAdapter : ListAdapter<Trips, TripsAdapter.TripsViewHolder>(TripsAdapt
 val item=getItem(position)
         holder.bind(item)
     }
-
 }
