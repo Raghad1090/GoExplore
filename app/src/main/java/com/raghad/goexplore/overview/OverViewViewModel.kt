@@ -10,6 +10,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.raghad.goexplore.model.FavouritesData
+import com.raghad.goexplore.model.Trips
 import com.raghad.goexplore.network.GoExploreApi
 import com.raghad.goexplore.network.PhotoItem
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,29 +19,39 @@ import java.lang.Exception
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 enum class GoExploreStatus { LOADING, ERROR, DONE }
 
 class OverViewViewModel : ViewModel() {
 
+
     var Uid = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
     // collection to save trip plan
-    private val collection = Firebase.firestore.collection("My trips")
+    private val tripsCollection = Firebase.firestore.collection("My trips")
 
     //collection to save favourite items
-    private val favourateCollection = Firebase.firestore.collection("Favouriate")
-
+    private val favouriteCollection = Firebase.firestore.collection("Favourite")
 
     private val _status = MutableLiveData<GoExploreStatus>()
     val status: LiveData<GoExploreStatus> = _status
 
+    //region app lists
     private val _photos = MutableLiveData<List<PhotoItem?>>()
     val photos: LiveData<List<PhotoItem?>> = _photos
 
     private val _fav = MutableLiveData<MutableList<FavouritesData?>>()
     val fav: LiveData<MutableList<FavouritesData?>> = _fav
 
+    private val _plans = MutableLiveData<MutableList<Trips?>>()
+    val plans: LiveData<MutableList<Trips?>> = _plans
+
+    //endregion
+
+    //region viewModel variables
     private val _title = MutableLiveData<String>()
     val title: LiveData<String> = _title
 
@@ -53,10 +64,12 @@ class OverViewViewModel : ViewModel() {
     private val _tripD = MutableLiveData<String>()
     var tripD: LiveData<String> = _tripD
 
+    private val _tripDate = MutableLiveData<String>()
+    var tripDate: LiveData<String> = _tripDate
+
     private var _isLoaded = MutableStateFlow<Boolean>(false)
 
-
-    private val favouritesDataFirebace = Firebase.firestore.collection("Favouriate")
+    //endregion
 
 
     init {
@@ -94,50 +107,47 @@ class OverViewViewModel : ViewModel() {
         }
     }
 
+    //display place image and description
     fun displayDescription(position: Int, imageID: String) {
 
         getItem(position)
+
     }
 
-
-    fun addFavouriate(id: String, imageId: String) {
+    //region favourites
+    fun addFavourite(id: String, imageId: String) {
 
         val favItem = _photos.value?.find {
 
-            Log.e("TAG", "addFavouriate: id:  ${it!!.id} imageid ${imageId}")
+            Log.e("TAG", "addFavourite: id:  ${it!!.id} imageid ${imageId}")
 
             it!!.id == imageId
         }
 
-//        val favItem1 = _fav.value?.find { it!!.id == imageId.toString() }
-
         favItem.let {
 
-            Log.e("TAG", "addFavouriate: title ${it?.title}")
-            Log.e("TAG", "addFavouriate: farm ${it?.farm}")
-            Log.e("TAG", "addFavouriate:  secret ${it?.secret}")
-            Log.e("TAG", "addFavouriate: server ${it?.server}")
-            Log.e("TAG", "addFavouriate: imageUrl ${it?.imageUrl}")
-            val favItem: FavouritesData =
-                FavouritesData(it?.title, it?.id,  it?.imageUrl)
+            val favItem: FavouritesData = FavouritesData(it?.title, it?.id, it?.imageUrl)
 
-            addFavouriateToFirebace(favItem)
+            addFavouriteToFirebace(favItem)
 
         }
     }
 
-    fun addFavouriateToFirebace(item: FavouritesData) {
+    /*
+    * save data to firestore database
+    * */
+    fun addFavouriteToFirebace(item: FavouritesData) {
 
-        favourateCollection.document("user").collection(Uid).add(item)
+        favouriteCollection.document("user").collection(Uid).add(item)
             .addOnCompleteListener { task ->
 
             }.addOnFailureListener { println(it.message) }
     }
 
 
-    fun getFavouriate() {
+    fun getFavourite() {
 
-        favourateCollection.document("user").collection(Uid).get()
+        favouriteCollection.document("user").collection(Uid).get()
 
             .addOnCompleteListener { task ->
 
@@ -156,15 +166,83 @@ class OverViewViewModel : ViewModel() {
             }.addOnFailureListener { println(it.message) }
     }
 
-    fun displayTrip() {
-        Log.e("TAG", "showUserInfo: in")
-        var doc = collection.document(Uid)
-        Log.e("TAG", "showUserInfo: doc $doc")
-        doc.get()
+
+    fun removeFavourite(item: FavouritesData){
+
+        favouriteCollection.document("user").collection(Uid)
+
+            .whereEqualTo("title", item.title)
+            .whereEqualTo("imageUrl", item.imageUrl)
+            .get()
             .addOnCompleteListener { task ->
-                Log.e("TAG", "showUserInfo:  1 ")
-                _tripT.value = task.result.data?.get("trip title").toString()
-                _tripD.value = task.result.data?.get("trip description").toString()
+                if (task.isSuccessful) {
+                    if (task.result!!.documents.isNotEmpty()) {
+                        for (data in task.result!!.documents) {
+                        favouriteCollection.document("user").collection(Uid)
+                        .document(data.id).delete()
+                            getFavourite()
+                    }
+                }
+            }
+        }
+    }
+
+    fun checkIfFavourite(imageId: String): Boolean {
+
+        viewModelScope.launch {
+            getFavourite()
+        }
+
+        var checkFav = _fav.value?.find {
+
+            it!!.id == imageId
+        }
+
+        checkFav.let { return true }
+
+        return false
+    }
+
+    //endregion
+
+
+    //region trips
+
+    fun save (title: String, description: String , destination:String){
+
+        val trip = Trips(title,description,destination)
+
+        tripsCollection.document("user").collection(Uid).add(trip)
+            .addOnSuccessListener {
+            }
+            .addOnFailureListener { e ->
+            }
+    }
+
+
+    fun getTripPlan() {
+
+        tripsCollection.document("user").collection(Uid).get()
+
+            .addOnCompleteListener { task ->
+
+                if (task.isSuccessful) {
+
+                    val item = mutableListOf<Trips?>()
+
+                    for (data in task.result.documents) {
+//                        Log.d("tripData","trip: ${task.result.documents}")
+
+                        val trip = data.toObject<Trips>()
+                        item.add(trip!!)
+                    }
+
+                    _plans.value = item
+                    Log.d("tripListData","trip: ${item}")
+                }
+
             }.addOnFailureListener { println(it.message) }
     }
+
+    //endregion
 }

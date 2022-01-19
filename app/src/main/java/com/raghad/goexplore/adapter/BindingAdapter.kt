@@ -26,7 +26,7 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<PhotoItem>?){
 
 }
 
-@BindingAdapter("favouriatelistData")
+@BindingAdapter("favouritelistData")
 fun bindfavRecyclerView(recyclerView: RecyclerView, data: List<FavouritesData>?){
 
     val adapter = recyclerView.adapter as FavouritesAdapter
@@ -36,7 +36,7 @@ fun bindfavRecyclerView(recyclerView: RecyclerView, data: List<FavouritesData>?)
 
 @BindingAdapter("triplistData")
 fun bindtripRecyclerView(recyclerView: RecyclerView, data: List<Trips>?){
-
+    Log.d("TAG", "triplistf ${data.toString()}")
     val adapter = recyclerView.adapter as TripsAdapter
     adapter.submitList(data)
 

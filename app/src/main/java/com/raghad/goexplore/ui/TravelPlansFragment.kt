@@ -6,54 +6,51 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.raghad.goexplore.R
-import com.raghad.goexplore.adapter.PhotoGridAdapter
 import com.raghad.goexplore.adapter.TripsAdapter
-import com.raghad.goexplore.databinding.FragmentHomeBinding
 import com.raghad.goexplore.databinding.FragmentTravelPlansBinding
-import com.raghad.goexplore.databinding.FragmentTripBinding
-import com.raghad.goexplore.model.Trips
+import com.raghad.goexplore.model.FavouritesData
+import com.raghad.goexplore.overview.OverViewViewModel
 
 /*
-app trip plan list page
+app trips plan list page
  */
 
 class TravelPlansFragment : Fragment() {
 
-    private var binding: FragmentTravelPlansBinding? = null
-    private lateinit var _binding: FragmentTravelPlansBinding
+    private val viewModel: OverViewViewModel by viewModels()
 
-
+    private lateinit var binding: FragmentTravelPlansBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-
-        val binding = FragmentTravelPlansBinding.inflate(inflater)
-
+        binding= DataBindingUtil.inflate(layoutInflater,R.layout.fragment_travel_plans,container,false)
+binding.viewModel=viewModel
+binding.lifecycleOwner=viewLifecycleOwner
         binding.recyclerViewTrips.adapter = TripsAdapter()
 
         return binding.root
-    }
 
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding?.floatingActionButton?.setOnClickListener{
+        binding.floatingButton.setOnClickListener {
 
-            var action = TravelPlansFragmentDirections.actionTravelPlansFragmentToTripFragment()
-            view.findNavController().navigate(action)
-
+            val action = TravelPlansFragmentDirections.actionTravelPlansFragmentToTripFragment()
+            findNavController().navigate(action)
         }
 
+        viewModel.getTripPlan()
     }
 }

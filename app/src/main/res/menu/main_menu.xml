@@ -3,18 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group
-        android:id="@+id/userAccount"
-        android:checkable="true"
-        android:enabled="true"
-        android:icon="@drawable/account_icon"
-        android:title="@string/my_profile"
-        app:showAsAction="always"
-        android:visible="true">
+        android:id="@+id/menu"
+        app:showAsAction="always">
+
+    <item android:id="@+id/Darkmode"
+        android:title="Darkmode"
+        android:icon="@drawable/dark_mode_icon"/>
+
+    <item android:id="@+id/Lightmode"
+        android:title="Lightmode"
+        android:icon="@drawable/light_mode_icon"/>
 
     <item android:id="@+id/logout"
         android:title="@string/logout"
-        android:visible="true"/>
+        android:icon="@drawable/logout_icon"/>
 
     </group>
-
+    
 </menu>

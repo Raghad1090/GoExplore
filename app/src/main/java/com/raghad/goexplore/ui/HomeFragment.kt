@@ -18,10 +18,6 @@ class HomeFragment : Fragment() {
 
     private val viewModel: OverViewViewModel by viewModels()
 
-    private var _binding: FragmentHomeBinding? = null
-
-    private lateinit var binding: FragmentHomeBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

@@ -18,5 +18,9 @@
     <color name="Blue900">#0277bd</color>
 
     <color name="red800">#C62828</color>
+    <color name="grey">#e0e0e0</color>
+    <color name="grey1">#424242</color>
+
+
 
 </resources>
