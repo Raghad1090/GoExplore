@@ -3,25 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.raghad.goexplore.overview.OverViewViewModel" />
+    </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.raghad.goexplore.overview.OverViewViewModel">
 
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/floatingButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="60dp"
+            android:layout_margin="50dp"
+            android:layout_marginEnd="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.15"
+            app:layout_constraintHorizontal_bias="1.14"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.990"
+            app:layout_constraintVertical_bias="0.95"
+            tools:layout_editor_absoluteX="319dp"
+            tools:layout_editor_absoluteY="622dp"
             app:srcCompat="@drawable/add_icon"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -36,6 +43,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
+            app:triplistData="@{viewModel.plans}"
             tools:listitem="@layout/plan_list_item" />
 
 

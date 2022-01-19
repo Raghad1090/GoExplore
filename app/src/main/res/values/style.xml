@@ -3,7 +3,6 @@
 
     <style name="raghad" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="android:windowBackground">@color/white</item>
-
     </style>
 
 </resources>

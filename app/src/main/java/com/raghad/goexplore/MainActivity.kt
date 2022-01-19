@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -17,6 +18,8 @@ import com.raghad.goexplore.user.LoginActivity
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+
+    private var isDarkMode = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,8 +61,38 @@ class MainActivity : AppCompatActivity() {
 
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-        }
 
+        }
+        else if (id == R.id.Darkmode){
+
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+        } else if (id == R.id.Lightmode){
+
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        }
         return super.onOptionsItemSelected(item)
     }
+
+
+//    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+//
+//        var darkMode: MenuItem = menu!!.findItem(R.id.Darkmode)
+//        var lightMode: MenuItem = menu!!.findItem(R.id.Lightmode)
+//
+//        if(isDarkMode){
+//            darkMode.setVisible(true)
+//            isDarkMode = true
+//            darkMode.setVisible(true)
+//            lightMode.setVisible(false)
+//
+//        } else {
+//            isDarkMode = false
+//            lightMode.setVisible(true)
+//            darkMode.setVisible(false)
+//
+//        }
+//        return super.onPrepareOptionsMenu(menu)
+//    }
 }

@@ -13,16 +13,16 @@ import com.raghad.goexplore.overview.OverViewViewModel
 
 class DescriptionFragment : Fragment() {
 
-    private var _binding: FragmentDescriptionBinding? = null
-    private lateinit var binding:FragmentDescriptionBinding
-
     private val viewModel: OverViewViewModel by viewModels()
+
+    private var _binding: FragmentDescriptionBinding? = null
+    private lateinit var binding: FragmentDescriptionBinding
 
     //to get arg values
 
-    var displayPosition : Int = 0
+    var displayPosition: Int = 0
 
-   lateinit var imageID : String
+    lateinit var imageID: String
 
     var Uid = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
@@ -34,8 +34,8 @@ class DescriptionFragment : Fragment() {
 
             displayPosition = it!!.getInt("itemPosition")
 
-            imageID  = it?.getString("imageId")!!
-            Log.e("TAG", "onCreate: $imageID", )
+            imageID = it?.getString("imageId")!!
+            Log.e("TAG", "onCreate: $imageID",)
         }
     }
 
@@ -45,7 +45,7 @@ class DescriptionFragment : Fragment() {
     ): View? {
 
         _binding = FragmentDescriptionBinding.inflate(inflater)
-        binding=_binding!!
+        binding = _binding!!
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = viewLifecycleOwner
@@ -60,12 +60,11 @@ class DescriptionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.displayDescription(displayPosition,imageID)
+        viewModel.displayDescription(displayPosition, imageID)
 
         binding.favButton.setOnClickListener {
 
-            viewModel.addFavouriate(Uid,imageID)
-
+            viewModel.addFavourite(Uid, imageID)
         }
     }
 }

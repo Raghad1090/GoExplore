@@ -5,6 +5,7 @@
     android:id="@+id/navigation_graph"
     app:startDestination="@id/homeFragment">
 
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.raghad.goexplore.ui.HomeFragment"
@@ -45,9 +46,6 @@
             android:id="@+id/action_travelPlansFragment_to_favoritesFragment"
             app:destination="@id/favoritesFragment" />
         <action
-            android:id="@+id/action_travelPlansFragment_to_displayTripFragment"
-            app:destination="@id/displayTripFragment" />
-        <action
             android:id="@+id/action_travelPlansFragment_to_tripFragment"
             app:destination="@id/tripFragment" />
     </fragment>
@@ -76,14 +74,10 @@
     <fragment
         android:id="@+id/tripFragment"
         android:name="com.raghad.goexplore.ui.TripFragment"
-        android:label="TripFragment">
+        android:label="Trip">
         <action
             android:id="@+id/action_tripFragment_to_travelPlansFragment"
             app:destination="@id/travelPlansFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/displayTripFragment"
-        android:name="com.raghad.goexplore.ui.DisplayTripFragment"
-        android:label="DisplayTripFragment" />
 
 </navigation>

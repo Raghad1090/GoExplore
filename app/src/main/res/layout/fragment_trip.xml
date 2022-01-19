@@ -3,85 +3,120 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.raghad.goexplore.overview.OverViewViewModel" />
+
+        <variable
+            name="tripFragment"
+            type="com.raghad.goexplore.ui.TripFragment" />
+    </data>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:scrollbars="vertical">
 
-            <EditText
-                android:id="@+id/addtripDes"
-                android:layout_width="314dp"
-                android:layout_height="134dp"
-                android:layout_marginBottom="56dp"
-                app:layout_constraintBottom_toTopOf="@+id/creatTrip"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.505"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/title2"
-                android:layout_width="200dp"
-                android:layout_height="45dp"
-                android:layout_marginBottom="20dp"
-                android:gravity="start"
-                android:text="Notes"
-                android:textSize="25dp"
-                app:layout_constraintBottom_toTopOf="@+id/addtripDes"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.232"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addtripTitle"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="200dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="82dp"
-                android:gravity="start"
-                android:text="Trip Title"
-                android:textSize="25dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.232"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/addtripTitle"
-                android:layout_width="200dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="31dp"
+                android:id="@+id/addtripDes"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="314dp"
+                android:layout_height="134dp"
+                android:layout_marginTop="128dp"
+                android:hint="Notes"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.232"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title"
-                android:hint="Trip title"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:layout_constraintTop_toBottomOf="@+id/addtripTitle"
+                tools:ignore="SpeakableTextPresentCheck">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-<!--            <EditText-->
-<!--                android:id="@+id/addtripTitle"-->
-<!--                android:layout_width="200dp"-->
-<!--                android:layout_height="45dp"-->
-<!--                android:layout_marginTop="31dp"-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addtripTitle"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="207dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="76dp"
+                android:hint="Trip title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.235"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck"
+                    tools:layout_editor_absoluteX="55dp"
+                    tools:layout_editor_absoluteY="70dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!--            <ImageView-->
+<!--                android:id="@+id/calender"-->
+<!--                android:layout_width="25dp"-->
+<!--                android:layout_height="25dp"-->
+<!--                android:layout_marginTop="44dp"-->
+<!--                android:layout_marginEnd="156dp"-->
+<!--                android:onClick="@{()-> tripFragment.dateDialog()}"-->
 <!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.232"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/addtripTitle"-->
+<!--                app:srcCompat="@drawable/calendar_icon" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tripDate"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="120dp"-->
+<!--                android:onClick="@{()-> tripFragment.dateDialog()}"-->
+<!--                android:text="@{@string/due_date(viewModel.tripDate)}"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/addtripDes"-->
 <!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/title" />-->
+<!--                app:layout_constraintTop_toTopOf="@id/calender"-->
+<!--                app:layout_constraintVertical_bias="0.0" />-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addtripDestination"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="207dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="172dp"
+                android:hint="Trip Destination"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.235"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addDestination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck"
+                    tools:layout_editor_absoluteX="55dp"
+                    tools:layout_editor_absoluteY="70dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/creatTrip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="64dp"
-                android:text="Creat"
+                android:layout_marginBottom="68dp"
+                android:text="Create"
+                android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
