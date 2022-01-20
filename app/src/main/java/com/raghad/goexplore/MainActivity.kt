@@ -19,17 +19,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 
-    private var isDarkMode = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         setupActionBarWithNavController(findNavController(R.id.nav_host_fragment))
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+
         navController = navHostFragment.navController
 
         setupActionBarWithNavController(navController)
@@ -43,7 +41,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
+
         return navController.navigateUp() || super.onSupportNavigateUp()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -74,25 +74,4 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
-//    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-//
-//        var darkMode: MenuItem = menu!!.findItem(R.id.Darkmode)
-//        var lightMode: MenuItem = menu!!.findItem(R.id.Lightmode)
-//
-//        if(isDarkMode){
-//            darkMode.setVisible(true)
-//            isDarkMode = true
-//            darkMode.setVisible(true)
-//            lightMode.setVisible(false)
-//
-//        } else {
-//            isDarkMode = false
-//            lightMode.setVisible(true)
-//            darkMode.setVisible(false)
-//
-//        }
-//        return super.onPrepareOptionsMenu(menu)
-//    }
 }

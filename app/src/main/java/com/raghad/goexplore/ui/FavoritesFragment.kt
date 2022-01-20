@@ -15,7 +15,9 @@ import com.raghad.goexplore.adapter.FavouritesAdapter
 import com.raghad.goexplore.databinding.FragmentFavoritesBinding
 import com.raghad.goexplore.overview.OverViewViewModel
 
-
+/*
+favorites list page
+ */
 class FavoritesFragment : Fragment() {
 
     private val viewModel: OverViewViewModel by viewModels()
@@ -41,8 +43,6 @@ class FavoritesFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.recyclerViewFavourite.adapter = FavouritesAdapter{viewModel.removeFavourite(it)}
-
-
 
         return binding.root
     }

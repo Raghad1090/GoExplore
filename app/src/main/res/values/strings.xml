@@ -6,9 +6,10 @@
     <string name="start_explore">Start Explore</string>
     <string name="plan">Plan</string>
     <string name="explore">Explore</string>
-    <string name="favorites">Favorites</string>
+    <string name="favorites">Favourites</string>
     <string name="favourites">Favourites</string>
-    <string name="add_to_favouriate">ADD TO FAVOURIATE</string>
+    <string name="add_to_favourite">ADD TO FAVOURITE</string>
     <string name="my_profile">My Profile</string>
     <string name="logout">logout</string>
+    <string name="wish_list">Wish List</string>
 </resources>

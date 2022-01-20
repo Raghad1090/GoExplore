@@ -11,8 +11,7 @@ import com.raghad.goexplore.databinding.GridViewItemBinding
 import com.raghad.goexplore.network.PhotoItem
 import com.raghad.goexplore.ui.HomeFragmentDirections
 
-class PhotoGridAdapter : ListAdapter<PhotoItem, PhotoGridAdapter.GoExplorePhotoViewHolder>
-    (DiffCallback) {
+class PhotoGridAdapter : ListAdapter<PhotoItem, PhotoGridAdapter.GoExplorePhotoViewHolder>(DiffCallback) {
 
 
     class GoExplorePhotoViewHolder(
@@ -61,10 +60,9 @@ class PhotoGridAdapter : ListAdapter<PhotoItem, PhotoGridAdapter.GoExplorePhotoV
 
         holder.displayDesscripton.setOnClickListener {
 
-//            Log.e("TAG", "onBindViewHolder: $position", )
-            Log.e("TAG", "onBindViewHolder: ${placePhoto.id}")
-            var b = placePhoto.id
-            val action = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment(position,b!!)
+            var positionArg = placePhoto.id
+
+            val action = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment(position,positionArg!!)
             holder.displayDesscripton.findNavController().navigate(action)
 
         }

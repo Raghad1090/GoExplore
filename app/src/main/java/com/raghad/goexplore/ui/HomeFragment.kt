@@ -13,7 +13,6 @@ import com.raghad.goexplore.overview.OverViewViewModel
 /*
 app home page
  */
-
 class HomeFragment : Fragment() {
 
     private val viewModel: OverViewViewModel by viewModels()

@@ -1,5 +1,6 @@
 //package com.raghad.goexplore
 //
+//import android.annotation.SuppressLint
 //import android.app.NotificationChannel
 //import android.app.NotificationManager
 //import android.app.PendingIntent
@@ -14,14 +15,15 @@
 //const val channelId = "notificationChannel"
 //const val channelName = "com.raghad.goexplore"
 //
+//@SuppressLint("MissingFirebaseInstanceTokenRefresh")
 //class MyFirebaseMessagingService : FirebaseMessagingService() {
 //
 //
-//    override fun onMessageRecived(remoteMessage: RemoteMessage){
+//    override fun onMessageRecived(remoteMessage: RemoteMessage) {
 //
 //        if (remoteMessage.getNotification() != null){
 //
-//            generateNotification(remoteMessage.notification!!.message!!)
+//            generateNotification(remoteMessage.notification!!.title!!, remoteMessage.notification!!.body!!)
 //        }
 //    }
 //
@@ -35,6 +37,7 @@
 //        return remoteView
 //    }
 //
+//    @SuppressLint("UnspecifiedImmutableFlag")
 //    fun generateNotification(message : String){
 //
 //        val intent = Intent(this, MainActivity::class.java)
@@ -54,11 +57,9 @@
 //
 //        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 //
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.0){
-//
-//         val notificationChannel = NotificationChannel(channelId, channelName,NotificationManager.IMPORTANCE_HIGH)
-//         notificationManager.createNotificationChannel(notificationChannel)
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+//            val notificationChannel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
+//            notificationManager.createNotificationChannel(notificationChannel)
 //
 //        }
 //        notificationManager.notify(0,builder.build())

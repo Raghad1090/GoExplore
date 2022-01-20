@@ -24,12 +24,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/addtripDes"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="314dp"
-                android:layout_height="134dp"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="128dp"
-                android:hint="Notes"
+                android:hint="Places i want to go"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintHorizontal_bias="0.476"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/addtripTitle"
                 tools:ignore="SpeakableTextPresentCheck">
@@ -45,12 +45,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/addtripTitle"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="207dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="76dp"
-                android:hint="Trip title"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="72dp"
+                android:hint="Title"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.235"
+                app:layout_constraintHorizontal_bias="0.476"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -64,39 +64,15 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
-            <!--            <ImageView-->
-<!--                android:id="@+id/calender"-->
-<!--                android:layout_width="25dp"-->
-<!--                android:layout_height="25dp"-->
-<!--                android:layout_marginTop="44dp"-->
-<!--                android:layout_marginEnd="156dp"-->
-<!--                android:onClick="@{()-> tripFragment.dateDialog()}"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/addtripTitle"-->
-<!--                app:srcCompat="@drawable/calendar_icon" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tripDate"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="120dp"-->
-<!--                android:onClick="@{()-> tripFragment.dateDialog()}"-->
-<!--                android:text="@{@string/due_date(viewModel.tripDate)}"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/addtripDes"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="@id/calender"-->
-<!--                app:layout_constraintVertical_bias="0.0" />-->
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/addtripDestination"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="207dp"
-                android:layout_height="50dp"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="172dp"
-                android:hint="Trip Destination"
+                android:hint="Destination"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.235"
+                app:layout_constraintHorizontal_bias="0.476"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 

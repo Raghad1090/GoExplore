@@ -12,6 +12,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.raghad.goexplore.databinding.FragmentTripBinding
 import com.raghad.goexplore.overview.OverViewViewModel
 
+/*
+creat trip page
+ */
 class TripFragment : Fragment() {
 
     private val viewModel: OverViewViewModel by viewModels()
@@ -39,15 +42,12 @@ class TripFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        viewModel.plans.observe(viewLifecycleOwner, {
-//
-//            Log.d("TAG", "onViewCreated: ${it.toString()}")
-//        })
+
         //click to save trip in Trips list
         binding?.creatTrip?.setOnClickListener {
 
             //send input data to save function
-            viewModel.save(
+            viewModel.saveTrip(
                 binding!!.addTitle.text.toString(),
                 binding!!.addDes.text.toString(),
                 binding!!.addDestination.text.toString()

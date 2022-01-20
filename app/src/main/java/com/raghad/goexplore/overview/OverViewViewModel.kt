@@ -58,19 +58,11 @@ class OverViewViewModel : ViewModel() {
     private val _image = MutableLiveData<String>()
     val image: LiveData<String> = _image
 
-    private val _tripT = MutableLiveData<String>()
-    var tripTitle: LiveData<String> = _tripT
-
-    private val _tripD = MutableLiveData<String>()
-    var tripD: LiveData<String> = _tripD
-
-    private val _tripDate = MutableLiveData<String>()
-    var tripDate: LiveData<String> = _tripDate
-
     private var _isLoaded = MutableStateFlow<Boolean>(false)
 
     //endregion
 
+    //region display images list in home page
 
     init {
         getPlacesPhotos()
@@ -95,6 +87,9 @@ class OverViewViewModel : ViewModel() {
         }
     }
 
+    //endregion
+
+    //region display place image and description
     fun getItem(postion: Int) {
         viewModelScope.launch {
             _isLoaded.collect {
@@ -107,12 +102,14 @@ class OverViewViewModel : ViewModel() {
         }
     }
 
-    //display place image and description
+
     fun displayDescription(position: Int, imageID: String) {
 
         getItem(position)
 
     }
+
+    //endregion
 
     //region favourites
     fun addFavourite(id: String, imageId: String) {
@@ -208,7 +205,7 @@ class OverViewViewModel : ViewModel() {
 
     //region trips
 
-    fun save (title: String, description: String , destination:String){
+    fun saveTrip (title: String, description: String , destination:String){
 
         val trip = Trips(title,description,destination)
 
@@ -220,7 +217,7 @@ class OverViewViewModel : ViewModel() {
     }
 
 
-    fun getTripPlan() {
+    fun getTrip() {
 
         tripsCollection.document("user").collection(Uid).get()
 
@@ -231,7 +228,8 @@ class OverViewViewModel : ViewModel() {
                     val item = mutableListOf<Trips?>()
 
                     for (data in task.result.documents) {
-//                        Log.d("tripData","trip: ${task.result.documents}")
+
+                        Log.d("tripData","trip: ${task.result.documents}")
 
                         val trip = data.toObject<Trips>()
                         item.add(trip!!)
@@ -243,6 +241,29 @@ class OverViewViewModel : ViewModel() {
 
             }.addOnFailureListener { println(it.message) }
     }
+
+
+    fun removeTrip(item: Trips){
+
+        tripsCollection.document("user").collection(Uid)
+
+            .whereEqualTo("title", item.title)
+            .whereEqualTo("destination", item.destinations)
+            .whereEqualTo("description", item.description)
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    if (task.result!!.documents.isNotEmpty()) {
+                        for (data in task.result!!.documents) {
+                            tripsCollection.document("user").collection(Uid)
+                                .document(data.id).delete()
+                            getTrip()
+                    }
+                }
+            }
+        }
+    }
+
 
     //endregion
 }
