@@ -1,30 +1,30 @@
 # GoExplore
 
-## Image browsing application of gorgeous attraction from around the world to find new inspirations. The app lets you add places to your favorites and add destinations to your wish list.
+### Image browsing application of gorgeous attraction from around the world to find new inspirations. The app lets you add places to your favorites and add destinations to your wish list.
  
-# Features
+## Features
 
-### - Display list of attraction places images.
-### - See place image description.
-### - Save place image and description to favorites.
-### - Create trip.
-### - Create travel wish list.
-### - Browse app in dark and light mode.
+#### - Display list of attraction places images.
+#### - See place image description.
+#### - Save place image and description to favorites.
+#### - Create trip.
+#### - Create travel wish list.
+#### - Browse app in dark and light mode.
 
-# API
-### - Flickr API.
+## API
+#### - Flickr API.
 
-# Technologies used
-### - Follow MVVM architecture.
-### - Firestore database for saving data. 
-### - Firebase authentication.
-### - Android Jetpack (Activity - Constraintlayout - Databinding - GridLayout - Navigation - Recyclerview - Material Design Components)
+## Technologies used
+#### - Follow MVVM architecture.
+#### - Firestore database for saving data. 
+#### - Firebase authentication.
+#### - Android Jetpack (Activity - Constraintlayout - Databinding - GridLayout - Navigation - Recyclerview - Material Design Components)
 
-# unsolved problems
-### - Linking place image to specific trip.
-### - Notifications.
+## unsolved problems
+#### - Linking place image to specific trip.
+#### - Notifications.
 
-# Go Explore UI
+## Go Explore UI
 
 <img width="300" alt="Screen Shot 2022-01-20 at 2 52 23 PM" src="https://user-images.githubusercontent.com/92276329/150389562-614cd43c-2088-44b4-84e5-9637fb4d3764.png">   
 
