@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Go Explore</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">login</string>
+    <string name="start_explore">Start Explore</string>
+    <string name="plan">Plan</string>
+    <string name="explore">Explore</string>
+    <string name="favorites">Favourites</string>
+    <string name="favourites">Favourites</string>
+    <string name="add_to_favourite">ADD TO FAVOURITE</string>
+    <string name="my_profile">My Profile</string>
+    <string name="logout">logout</string>
+    <string name="wish_list">Wish List</string>
 </resources>
