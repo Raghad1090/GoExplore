@@ -11,6 +11,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.raghad.goexplore.databinding.FragmentDescriptionBinding
 import com.raghad.goexplore.overview.OverViewViewModel
 
+/*
+place discription page
+ */
 class DescriptionFragment : Fragment() {
 
     private val viewModel: OverViewViewModel by viewModels()
@@ -18,14 +21,12 @@ class DescriptionFragment : Fragment() {
     private var _binding: FragmentDescriptionBinding? = null
     private lateinit var binding: FragmentDescriptionBinding
 
-    //to get arg values
+    var Uid = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
+    //to get arg values
     var displayPosition: Int = 0
 
     lateinit var imageID: String
-
-    var Uid = FirebaseAuth.getInstance().currentUser?.uid ?: ""
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +36,6 @@ class DescriptionFragment : Fragment() {
             displayPosition = it!!.getInt("itemPosition")
 
             imageID = it?.getString("imageId")!!
-            Log.e("TAG", "onCreate: $imageID",)
         }
     }
 

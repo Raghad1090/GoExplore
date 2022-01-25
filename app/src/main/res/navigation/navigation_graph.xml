@@ -37,7 +37,7 @@
     <fragment
         android:id="@+id/travelPlansFragment"
         android:name="com.raghad.goexplore.ui.TravelPlansFragment"
-        android:label="Plans"
+        android:label="Wish List"
         tools:layout="@layout/fragment_travel_plans">
         <action
             android:id="@+id/action_travelPlansFragment_to_homeFragment"
@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_travelPlansFragment_to_tripFragment"
             app:destination="@id/tripFragment" />
+        <action
+            android:id="@+id/action_travelPlansFragment_to_editTripFragment"
+            app:destination="@id/editTripFragment" />
     </fragment>
 
     <activity
@@ -78,6 +81,17 @@
         <action
             android:id="@+id/action_tripFragment_to_travelPlansFragment"
             app:destination="@id/travelPlansFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editTripFragment"
+        android:name="com.raghad.goexplore.ui.EditTripFragment"
+        android:label="EditTripFragment" >
+        <action
+            android:id="@+id/action_editTripFragment_to_travelPlansFragment"
+            app:destination="@id/travelPlansFragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
 
 </navigation>

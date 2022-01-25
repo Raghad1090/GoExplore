@@ -15,7 +15,8 @@ import com.raghad.goexplore.R
 import com.raghad.goexplore.model.FavouritesData
 import com.raghad.goexplore.databinding.ListItemBinding
 
-class FavouritesAdapter(var onRemoveClicked:(FavouritesData)->Unit): ListAdapter<FavouritesData, FavouritesAdapter.ItemViewHolder>(FavouritesAdapter.DiffCallback ) {
+class FavouritesAdapter(var onRemoveClicked:(FavouritesData)->Unit):
+    ListAdapter<FavouritesData, FavouritesAdapter.ItemViewHolder>(FavouritesAdapter.DiffCallback ) {
 
 
     class ItemViewHolder(private var binding: ListItemBinding): RecyclerView.ViewHolder(binding.root) {
@@ -45,7 +46,7 @@ class FavouritesAdapter(var onRemoveClicked:(FavouritesData)->Unit): ListAdapter
     }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-            val adapterLayout = ListItemBinding.inflate(LayoutInflater.from(parent.context))
+            val adapterLayout = ListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
             return ItemViewHolder(adapterLayout)
     }
 

@@ -14,17 +14,28 @@
             android:layout_height="80dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/img" />
+
+        <TextView
+            android:id="@+id/notificationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/notificationImage"
+            android:text="Go Explore"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/notificationText"
-            android:layout_width="300dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/notificationTitle"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="@id/notificationImage"
+            android:layout_toRightOf="@id/notificationImage"
             android:text="We've missed you! Come check out new posts for travel inspiration"
-            android:textSize="20dp" />
+            android:textSize="18sp" />
 
 
     </RelativeLayout>

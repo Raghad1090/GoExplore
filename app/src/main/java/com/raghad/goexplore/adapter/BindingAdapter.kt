@@ -42,7 +42,6 @@ fun bindtripRecyclerView(recyclerView: RecyclerView, data: List<Trips>?){
 
 }
 
-
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
 

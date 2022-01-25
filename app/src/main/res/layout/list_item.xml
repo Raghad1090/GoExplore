@@ -12,13 +12,13 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="400dp"
-        android:layout_height="257dp"
+        android:layout_width="match_parent"
+        android:layout_height="258dp"
         android:layout_margin="15dp"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="400dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:scrollbars="vertical">

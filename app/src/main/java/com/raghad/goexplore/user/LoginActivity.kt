@@ -13,7 +13,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.raghad.goexplore.MainActivity
 import com.raghad.goexplore.R
 
-
+/*
+user login page
+ */
 class LoginActivity : AppCompatActivity() {
 
 
@@ -22,7 +24,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         var button = findViewById<Button>(R.id.Button)
-        var test = findViewById<Button>(R.id.Test)
 
         button.setOnClickListener {
 
@@ -32,11 +33,6 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        //to test app during work without login
-        test.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     private val signInLauncher = registerForActivityResult(
@@ -54,7 +50,6 @@ class LoginActivity : AppCompatActivity() {
         .createSignInIntentBuilder()
         .setAvailableProviders(providers)
         .setTheme(R.style.raghad)
-//        .setLogo(R.drawable.)
         .build()
 
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
@@ -63,8 +58,6 @@ class LoginActivity : AppCompatActivity() {
         if (result.resultCode == AppCompatActivity.RESULT_OK) {
             // Successfully signed in
             val user = FirebaseAuth.getInstance().currentUser
-
-//            startActivity(Intent(this,MainActivity::class.java))
 
             //open another activity to display home fragment
             val intent = Intent(this, MainActivity::class.java)
@@ -82,11 +75,6 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this,response?.error?.errorCode.toString(),Toast.LENGTH_LONG).show()
                 return
             }
-
-            // Sign in failed. If response is null the user canceled the
-            // sign-in flow using the back button. Otherwise check
-            // response.getError().getErrorCode() and handle the error.
-            // ...
         }
     }
 }

@@ -3,31 +3,36 @@ package com.raghad.goexplore.ui
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import com.raghad.goexplore.R
-import com.raghad.goexplore.adapter.FavouritesAdapter
-import com.raghad.goexplore.databinding.FragmentFavoritesBinding
+import androidx.navigation.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.raghad.goexplore.databinding.FragmentEditTripBinding
 import com.raghad.goexplore.overview.OverViewViewModel
 
-/*
-favorites list page
- */
-class FavoritesFragment : Fragment() {
+
+class EditTripFragment : Fragment() {
+
 
     private val viewModel: OverViewViewModel by viewModels()
 
-    private lateinit var binding: FragmentFavoritesBinding
+    private var _binding: FragmentEditTripBinding? = null
+    private lateinit var binding: FragmentEditTripBinding
+
+    var Uid = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+
+    lateinit var title: String
+
+    var tripPosition: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
 
+            tripPosition = it!!.getInt("position")
+
+            title = it?.getString("title")!!
         }
     }
 
@@ -36,21 +41,20 @@ class FavoritesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding= DataBindingUtil.inflate(layoutInflater,R.layout.fragment_favorites,container,false)
+        _binding = FragmentEditTripBinding.inflate(inflater)
+        binding = _binding!!
 
+        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = viewLifecycleOwner
 
+        // Giving the binding access to the OverviewViewModel
         binding.viewModel = viewModel
-
-        binding.recyclerViewFavourite.adapter = FavouritesAdapter{viewModel.removeFavourite(it)}
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.getFavourite()
 
     }
 }

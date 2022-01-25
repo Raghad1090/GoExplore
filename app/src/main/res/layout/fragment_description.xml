@@ -32,7 +32,7 @@
 
         <TextView
             android:id="@+id/image_title"
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="23dp"
             android:gravity="center"
@@ -54,7 +54,7 @@
             android:layout_marginEnd="115dp"
             android:layout_marginBottom="24dp"
             android:background="@color/white"
-            android:text="@string/add_to_favouriate"
+            android:text="@string/add_to_favourite"
             android:textColor="#FFFFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

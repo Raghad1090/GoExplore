@@ -6,7 +6,7 @@
         android:id="@+id/travelPlansFragment"
         android:enabled="true"
         android:icon="@drawable/plans_icon"
-        android:title="@string/plan"/>
+        android:title="@string/wish_list"/>
 
     <item
         android:id="@+id/homeFragment"

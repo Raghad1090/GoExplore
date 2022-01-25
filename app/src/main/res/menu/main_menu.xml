@@ -7,11 +7,11 @@
         app:showAsAction="always">
 
     <item android:id="@+id/Darkmode"
-        android:title="Darkmode"
+        android:title="Dark mode"
         android:icon="@drawable/dark_mode_icon"/>
 
     <item android:id="@+id/Lightmode"
-        android:title="Lightmode"
+        android:title="Light mode"
         android:icon="@drawable/light_mode_icon"/>
 
     <item android:id="@+id/logout"

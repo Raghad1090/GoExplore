@@ -19,9 +19,8 @@ import com.raghad.goexplore.model.FavouritesData
 import com.raghad.goexplore.overview.OverViewViewModel
 
 /*
-app trips plan list page
+wish list page
  */
-
 class TravelPlansFragment : Fragment() {
 
     private val viewModel: OverViewViewModel by viewModels()
@@ -34,9 +33,12 @@ class TravelPlansFragment : Fragment() {
     ): View? {
 
         binding= DataBindingUtil.inflate(layoutInflater,R.layout.fragment_travel_plans,container,false)
-binding.viewModel=viewModel
-binding.lifecycleOwner=viewLifecycleOwner
-        binding.recyclerViewTrips.adapter = TripsAdapter()
+
+        binding.lifecycleOwner=viewLifecycleOwner
+
+        binding.viewModel=viewModel
+
+        binding.recyclerViewTrips.adapter = TripsAdapter{viewModel.removeTrip(it)}
 
         return binding.root
 
@@ -51,6 +53,6 @@ binding.lifecycleOwner=viewLifecycleOwner
             findNavController().navigate(action)
         }
 
-        viewModel.getTripPlan()
+        viewModel.getTrip()
     }
 }
