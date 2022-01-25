@@ -58,6 +58,15 @@ class OverViewViewModel : ViewModel() {
     private val _image = MutableLiveData<String>()
     val image: LiveData<String> = _image
 
+    private val _tTitle = MutableLiveData<String>()
+    val tTitle: LiveData<String> = _tTitle
+
+    private val _tDescription = MutableLiveData<String>()
+    val tDescription: LiveData<String> = _tDescription
+
+    private val _tDestination = MutableLiveData<String>()
+    val tDestination: LiveData<String> = _tDestination
+
     private var _isLoaded = MutableStateFlow<Boolean>(false)
 
     //endregion
@@ -216,7 +225,6 @@ class OverViewViewModel : ViewModel() {
             }
     }
 
-
     fun getTrip() {
 
         tripsCollection.document("user").collection(Uid).get()
@@ -243,6 +251,7 @@ class OverViewViewModel : ViewModel() {
     }
 
 
+
     fun removeTrip(item: Trips){
 
         tripsCollection.document("user").collection(Uid)
@@ -263,7 +272,6 @@ class OverViewViewModel : ViewModel() {
             }
         }
     }
-
 
     //endregion
 }

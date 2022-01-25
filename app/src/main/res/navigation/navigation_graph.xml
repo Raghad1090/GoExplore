@@ -90,8 +90,8 @@
             android:id="@+id/action_editTripFragment_to_travelPlansFragment"
             app:destination="@id/travelPlansFragment" />
         <argument
-            android:name="position"
-            app:argType="integer" />
+            android:name="title"
+            app:argType="string" />
     </fragment>
 
 </navigation>
